@@ -1,16 +1,15 @@
 package com.bootcamp.reviewservice.advice.responseexceptionhandler.exceptions;
 
-import com.bootcamp.reviewservice.advice.responseexceptionhandler.BaseErrorMessage;
 import com.bootcamp.reviewservice.advice.responseexceptionhandler.ErrorMessage;
 
-public class ItemNotFoundException extends BaseException {
+public class ItemNotFoundException extends RuntimeException {
 
-    public ItemNotFoundException(BaseErrorMessage baseErrorMessage) {
-        super(baseErrorMessage);
+    public ItemNotFoundException(ErrorMessage errorMessage) {
+        super(errorMessage.getMessage());
     }
 
     public ItemNotFoundException() {
-        super(ErrorMessage.ITEM_NOT_FOUND);
+        super(ErrorMessage.ITEM_NOT_FOUND.getMessage());
     }
 
 
