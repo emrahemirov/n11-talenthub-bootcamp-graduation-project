@@ -11,7 +11,10 @@ import com.bootcamp.reviewservice.modules.review.model.ReviewStatus;
 import com.bootcamp.reviewservice.modules.review.repository.ReviewRepository;
 import com.bootcamp.reviewservice.modules.user.model.User;
 import com.bootcamp.reviewservice.modules.user.service.UserService;
+import com.bootcamp.reviewservice.shared.WithPagination;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,9 +36,10 @@ public class ReviewService {
         return ReviewMapper.INSTANCE.toReviewResponse(review);
     }
 
-    public List<ReviewResponse> findAll() {
-        List<Review> reviews = repository.findAll();
-        return ReviewMapper.INSTANCE.toReviewResponseList(reviews);
+    public WithPagination<ReviewResponse> findAll(Integer page, Integer size) {
+        Page<Review> reviewPage = repository.findAll(PageRequest.of(page, size));
+        List<ReviewResponse> reviewResponseList = ReviewMapper.INSTANCE.toReviewResponseList(reviewPage.getContent());
+        return WithPagination.of(reviewPage, reviewResponseList);
     }
 
 

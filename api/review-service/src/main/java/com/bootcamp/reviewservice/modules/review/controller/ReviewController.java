@@ -5,13 +5,12 @@ import com.bootcamp.reviewservice.modules.review.dto.ReviewSaveRequest;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewUpdateRequest;
 import com.bootcamp.reviewservice.modules.review.service.ReviewService;
 import com.bootcamp.reviewservice.shared.RestResponse;
+import com.bootcamp.reviewservice.shared.WithPagination;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/reviews")
@@ -27,9 +26,12 @@ public class ReviewController {
     }
 
     @GetMapping
-    public ResponseEntity<RestResponse<List<ReviewResponse>>> findAll() {
-        List<ReviewResponse> reviewResponseList = service.findAll();
-        return new ResponseEntity<>(RestResponse.of(reviewResponseList), HttpStatus.OK);
+    public ResponseEntity<RestResponse<WithPagination<ReviewResponse>>> findAll(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "20") Integer size
+    ) {
+        WithPagination<ReviewResponse> responseWithPagination = service.findAll(page, size);
+        return new ResponseEntity<>(RestResponse.of(responseWithPagination), HttpStatus.OK);
     }
 
 
