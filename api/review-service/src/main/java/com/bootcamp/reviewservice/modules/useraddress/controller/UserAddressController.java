@@ -5,6 +5,7 @@ import com.bootcamp.reviewservice.modules.useraddress.dto.UserAddressSaveRequest
 import com.bootcamp.reviewservice.modules.useraddress.dto.UserAddressUpdateRequest;
 import com.bootcamp.reviewservice.modules.useraddress.service.UserAddressService;
 import com.bootcamp.reviewservice.shared.RestResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,12 @@ public class UserAddressController {
     private final UserAddressService service;
 
     @PostMapping
-    public ResponseEntity<RestResponse<UserAddressResponse>> create(@RequestBody UserAddressSaveRequest saveRequest) {
+    public ResponseEntity<RestResponse<UserAddressResponse>> save(@Valid @RequestBody UserAddressSaveRequest saveRequest) {
         UserAddressResponse userAddressResponse = service.save(saveRequest);
         return new ResponseEntity<>(RestResponse.of(userAddressResponse), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{by-user-id/{userId}")
+    @GetMapping("/by-user-id/{userId}")
     public ResponseEntity<RestResponse<List<UserAddressResponse>>> getAll(@PathVariable Long userId) {
         List<UserAddressResponse> userAddressResponseList = service.findAllByUserId(userId);
         return new ResponseEntity<>(RestResponse.of(userAddressResponseList), HttpStatus.OK);
@@ -38,7 +39,7 @@ public class UserAddressController {
     }
 
     @PutMapping("/{debugId}")
-    public ResponseEntity<RestResponse<UserAddressResponse>> update(@PathVariable Long debugId, @RequestBody UserAddressUpdateRequest updateRequest) {
+    public ResponseEntity<RestResponse<UserAddressResponse>> update(@PathVariable Long debugId, @Valid @RequestBody UserAddressUpdateRequest updateRequest) {
         UserAddressResponse userAddressResponse = service.update(updateRequest);
         return new ResponseEntity<>(RestResponse.of(userAddressResponse), HttpStatus.OK);
     }
@@ -48,6 +49,4 @@ public class UserAddressController {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
 }

@@ -11,7 +11,6 @@ import com.bootcamp.reviewservice.modules.useraddress.dto.UserAddressUpdateReque
 import com.bootcamp.reviewservice.modules.useraddress.model.UserAddress;
 import com.bootcamp.reviewservice.modules.useraddress.repository.UserAddressRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,34 +24,37 @@ public class UserAddressService {
 
 
     public UserAddressResponse save(UserAddressSaveRequest saveRequest) {
-        UserAddress review = repository.save(UserAddressMapper.INSTANCE.toUserAddress(saveRequest));
-        return UserAddressMapper.INSTANCE.toUserAddressResponse(review);
+        User user = userService.findUserById(saveRequest.userId());
+        UserAddress userAddressWithUser = UserAddressMapper.INSTANCE.toUserAddress(saveRequest);
+        userAddressWithUser.setUser(user);
+
+        UserAddress userAddress = repository.save(userAddressWithUser);
+
+        return UserAddressMapper.INSTANCE.toUserAddressResponse(userAddress);
     }
 
     public List<UserAddressResponse> findAllByUserId(Long userId) {
-        List<UserAddress> reviews = repository.findAllByUserId(userId);
-        return UserAddressMapper.INSTANCE.toUserAddressResponseList(reviews);
+        List<UserAddress> userAddressList = repository.findAllByUserId(userId);
+        return UserAddressMapper.INSTANCE.toUserAddressResponseList(userAddressList);
     }
 
     public UserAddressResponse findById(Long id) {
-        UserAddress review = findUserAddressById(id);
-        return UserAddressMapper.INSTANCE.toUserAddressResponse(review);
+        UserAddress userAddress = findUserAddressById(id);
+        return UserAddressMapper.INSTANCE.toUserAddressResponse(userAddress);
     }
 
     public void delete(Long id) {
-        UserAddress review = findUserAddressById(id);
-        repository.delete(review);
+        UserAddress userAddress = findUserAddressById(id);
+        repository.delete(userAddress);
     }
 
 
     public UserAddressResponse update(UserAddressUpdateRequest updateRequest) {
-        User foundUser = userService.findUserById(updateRequest.userId());
-        UserAddress foundUserAddress = findUserAddressById(updateRequest.id());
-        foundUserAddress.setUser(foundUser);
+        UserAddress currentUserAddress = findUserAddressById(updateRequest.id());
         UserAddress userAddressToUpdate = UserAddressMapper.INSTANCE.toUserAddress(updateRequest);
-        BeanUtils.copyProperties(userAddressToUpdate, foundUserAddress);
+        userAddressToUpdate.setUser(currentUserAddress.getUser());
 
-        UserAddress updatedUserAddress = repository.save(foundUserAddress);
+        UserAddress updatedUserAddress = repository.save(userAddressToUpdate);
         return UserAddressMapper.INSTANCE.toUserAddressResponse(updatedUserAddress);
     }
 
