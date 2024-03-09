@@ -35,11 +35,6 @@ public class UserController {
         return new ResponseEntity<>(RestResponse.of(userResponseWithPagination), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<RestResponse<UserResponse>> getOne(@PathVariable Long id) {
-        UserResponse userResponse = service.findById(id);
-        return new ResponseEntity<>(RestResponse.of(userResponse), HttpStatus.OK);
-    }
 
     @PutMapping("/{debugId}")
     public ResponseEntity<RestResponse<UserResponse>> update(@PathVariable Long debugId, @Valid @RequestBody UserUpdateRequest updateRequest) {

@@ -27,16 +27,11 @@ public class ReviewController {
     }
 
     @GetMapping
-    public ResponseEntity<RestResponse<List<ReviewResponse>>> getAll() {
+    public ResponseEntity<RestResponse<List<ReviewResponse>>> findAll() {
         List<ReviewResponse> reviewResponseList = service.findAll();
         return new ResponseEntity<>(RestResponse.of(reviewResponseList), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<RestResponse<ReviewResponse>> getOne(@PathVariable Long id) {
-        ReviewResponse reviewResponse = service.findById(id);
-        return new ResponseEntity<>(RestResponse.of(reviewResponse), HttpStatus.OK);
-    }
 
     @PutMapping("/{debugId}")
     public ResponseEntity<RestResponse<ReviewResponse>> update(@PathVariable Long debugId, @Valid @RequestBody ReviewUpdateRequest updateRequest) {

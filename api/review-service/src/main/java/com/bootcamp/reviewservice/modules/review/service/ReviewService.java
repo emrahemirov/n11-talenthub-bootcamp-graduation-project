@@ -38,10 +38,6 @@ public class ReviewService {
         return ReviewMapper.INSTANCE.toReviewResponseList(reviews);
     }
 
-    public ReviewResponse findById(Long id) {
-        Review review = findReviewById(id);
-        return ReviewMapper.INSTANCE.toReviewResponse(review);
-    }
 
     public void delete(Long id) {
         Review review = findReviewById(id);

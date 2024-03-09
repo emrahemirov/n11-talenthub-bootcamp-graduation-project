@@ -25,14 +25,13 @@ public class UserService {
 
     private final UserRepository repository;
 
-
     public UserResponse save(UserSaveRequest saveRequest) {
         User user = repository.save(UserMapper.INSTANCE.toUser(saveRequest));
         return UserMapper.INSTANCE.toUserResponse(user);
     }
 
     public WithPagination<UserResponse> findAll(Integer page, Integer size) {
-        Page<User> userPage = repository.findAllByStatus(UserStatus.ACTIVE, PageRequest.of(page, size));
+        Page<User> userPage = repository.findAll(PageRequest.of(page, size));
         List<UserResponse> userResponseList = UserMapper.INSTANCE.toUserResponseList(userPage.getContent());
         return WithPagination.of(
                 userPage,
@@ -40,10 +39,6 @@ public class UserService {
         );
     }
 
-    public UserResponse findById(Long id) {
-        User user = findUserById(id);
-        return UserMapper.INSTANCE.toUserResponse(user);
-    }
 
     public void delete(Long id) {
         User user = findUserById(id);
@@ -72,13 +67,13 @@ public class UserService {
     }
 
     private User updateStatus(Long id, UserStatus status) {
-        User foundUser = repository.findById(id).orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_NOT_FOUND));
+        User foundUser = findUserById(id);
         foundUser.setStatus(status);
         return repository.save(foundUser);
     }
 
     public User findUserById(Long id) {
-        return repository.findByIdAndStatus(id, UserStatus.ACTIVE).orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_NOT_FOUND));
+        return repository.findById(id).orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_NOT_FOUND));
     }
 
 }

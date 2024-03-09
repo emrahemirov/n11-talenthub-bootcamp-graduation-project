@@ -38,10 +38,6 @@ public class UserAddressService {
         return UserAddressMapper.INSTANCE.toUserAddressResponseList(userAddressList);
     }
 
-    public UserAddressResponse findById(Long id) {
-        UserAddress userAddress = findUserAddressById(id);
-        return UserAddressMapper.INSTANCE.toUserAddressResponse(userAddress);
-    }
 
     public void delete(Long id) {
         UserAddress userAddress = findUserAddressById(id);

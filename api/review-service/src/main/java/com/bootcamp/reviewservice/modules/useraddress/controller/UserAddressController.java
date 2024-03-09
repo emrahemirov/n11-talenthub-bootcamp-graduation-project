@@ -32,11 +32,6 @@ public class UserAddressController {
         return new ResponseEntity<>(RestResponse.of(userAddressResponseList), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<RestResponse<UserAddressResponse>> getOne(@PathVariable Long id) {
-        UserAddressResponse userAddressResponse = service.findById(id);
-        return new ResponseEntity<>(RestResponse.of(userAddressResponse), HttpStatus.OK);
-    }
 
     @PutMapping("/{debugId}")
     public ResponseEntity<RestResponse<UserAddressResponse>> update(@PathVariable Long debugId, @Valid @RequestBody UserAddressUpdateRequest updateRequest) {
