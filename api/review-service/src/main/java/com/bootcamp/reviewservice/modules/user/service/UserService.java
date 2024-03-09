@@ -9,8 +9,11 @@ import com.bootcamp.reviewservice.modules.user.dto.UserUpdateRequest;
 import com.bootcamp.reviewservice.modules.user.model.User;
 import com.bootcamp.reviewservice.modules.user.model.UserStatus;
 import com.bootcamp.reviewservice.modules.user.repository.UserRepository;
+import com.bootcamp.reviewservice.shared.WithPagination;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,9 +31,13 @@ public class UserService {
         return UserMapper.INSTANCE.toUserResponse(user);
     }
 
-    public List<UserResponse> findAll() {
-        List<User> users = repository.findAll();
-        return UserMapper.INSTANCE.toUserResponseList(users);
+    public WithPagination<UserResponse> findAll(Integer page, Integer size) {
+        Page<User> userPage = repository.findAllByStatus(UserStatus.ACTIVE, PageRequest.of(page, size));
+        List<UserResponse> userResponseList = UserMapper.INSTANCE.toUserResponseList(userPage.getContent());
+        return WithPagination.of(
+                userPage,
+                userResponseList
+        );
     }
 
     public UserResponse findById(Long id) {
@@ -65,13 +72,13 @@ public class UserService {
     }
 
     private User updateStatus(Long id, UserStatus status) {
-        User foundUser = findUserById(id);
+        User foundUser = repository.findById(id).orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_NOT_FOUND));
         foundUser.setStatus(status);
         return repository.save(foundUser);
     }
 
     public User findUserById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_NOT_FOUND));
+        return repository.findByIdAndStatus(id, UserStatus.ACTIVE).orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_NOT_FOUND));
     }
 
 }
