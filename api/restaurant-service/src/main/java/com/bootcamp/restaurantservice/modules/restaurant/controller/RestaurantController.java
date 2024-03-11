@@ -23,7 +23,7 @@ public class RestaurantController {
     private final RestaurantService service;
 
     @PostMapping
-    public ResponseEntity<RestResponse<RestaurantResponse>> save(@RequestBody RestaurantSaveRequest saveRequest) {
+    public ResponseEntity<RestResponse<RestaurantResponse>> save(@Valid @RequestBody RestaurantSaveRequest saveRequest) {
         RestaurantResponse restaurant = service.save(saveRequest);
         return new ResponseEntity<>(RestResponse.of(restaurant), HttpStatus.CREATED);
     }
@@ -35,13 +35,14 @@ public class RestaurantController {
     }
 
     @GetMapping("/recommended")
-    public ResponseEntity<RestResponse<List<RestaurantResponse>>> getRecommendedRestaurantsWithin10Km(@RequestParam String latitude, @RequestParam String longitude) {
-        List<RestaurantResponse> recommendedRestaurants = service.getRecommendedRestaurantsWithin10Km(latitude, longitude);
+    public ResponseEntity<RestResponse<List<RestaurantResponse>>> getRecommendedRestaurantsWithin10Km(@RequestParam Long userId) {
+        List<RestaurantResponse> recommendedRestaurants = service.getRecommendedRestaurantsWithin10Km(userId);
+
         return new ResponseEntity<>(RestResponse.of(recommendedRestaurants), HttpStatus.OK);
     }
 
     @PatchMapping("/{debugId}/average-review")
-    public ResponseEntity<HttpStatus> updateAverageReview(@PathVariable String debugId, @RequestBody AverageRateUpdateRequest updateRequest) {
+    public ResponseEntity<HttpStatus> updateAverageReview(@PathVariable String debugId, @Valid @RequestBody AverageRateUpdateRequest updateRequest) {
         service.updateAverageRate(updateRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }

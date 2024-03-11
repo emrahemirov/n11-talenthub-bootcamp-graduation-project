@@ -21,7 +21,7 @@ public class Review extends BaseEntity {
     private Long id;
 
     @Column(name = "restaurant_id", nullable = false)
-    private Long restaurantId;
+    private String restaurantId;
 
     @Column(name = "rate", nullable = false)
     @Enumerated(value = EnumType.STRING)

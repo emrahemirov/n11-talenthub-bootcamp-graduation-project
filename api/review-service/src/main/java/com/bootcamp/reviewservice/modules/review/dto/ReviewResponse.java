@@ -6,7 +6,7 @@ import com.bootcamp.reviewservice.modules.user.dto.UserResponse;
 public record ReviewResponse(
         Long id,
         UserResponse user,
-        Long restaurantId,
+        String restaurantId,
         String comment,
         ReviewRate rate
 ) {

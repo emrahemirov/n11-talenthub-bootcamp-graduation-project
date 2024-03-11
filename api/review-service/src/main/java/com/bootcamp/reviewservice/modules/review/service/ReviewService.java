@@ -2,11 +2,14 @@ package com.bootcamp.reviewservice.modules.review.service;
 
 import com.bootcamp.reviewservice.advice.responseexceptionhandler.ErrorMessage;
 import com.bootcamp.reviewservice.advice.responseexceptionhandler.exceptions.ItemNotFoundException;
+import com.bootcamp.reviewservice.modules.review.client.RestaurantFeignClient;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewMapper;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewResponse;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewSaveRequest;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewUpdateRequest;
+import com.bootcamp.reviewservice.modules.review.dto.averagerate.AverageRateUpdateRequest;
 import com.bootcamp.reviewservice.modules.review.model.Review;
+import com.bootcamp.reviewservice.modules.review.model.ReviewRate;
 import com.bootcamp.reviewservice.modules.review.repository.ReviewRepository;
 import com.bootcamp.reviewservice.modules.user.model.User;
 import com.bootcamp.reviewservice.modules.user.service.UserService;
@@ -25,10 +28,21 @@ public class ReviewService {
 
     private final ReviewRepository repository;
     private final UserService userService;
+    private final RestaurantFeignClient client;
 
+    // newRate == null -> delete
+    // oldRate == null -> add
+    // else -> update
 
     public ReviewResponse save(ReviewSaveRequest saveRequest) {
         User user = userService.findUserById(saveRequest.userId());
+
+        client.updateAverageReview(
+                saveRequest.restaurantId(),
+                new AverageRateUpdateRequest(
+                        saveRequest.restaurantId(), null,
+                        saveRequest.rate()));
+
         Review reviewWithUser = ReviewMapper.INSTANCE.toReview(saveRequest);
         reviewWithUser.setUser(user);
 
@@ -45,12 +59,30 @@ public class ReviewService {
 
     public void delete(Long id) {
         Review review = findReviewById(id);
+
+        client.updateAverageReview(
+                review.getRestaurantId(),
+                new AverageRateUpdateRequest(
+                        review.getRestaurantId(),
+                        review.getRate(),
+                        null));
+
         repository.delete(review);
     }
 
 
     public ReviewResponse update(ReviewUpdateRequest updateRequest) {
         Review review = findReviewById(updateRequest.id());
+        ReviewRate oldRate = review.getRate();
+        ReviewRate newRate = updateRequest.rate();
+
+        client.updateAverageReview(
+                review.getRestaurantId(),
+                new AverageRateUpdateRequest(
+                        review.getRestaurantId(),
+                        oldRate,
+                        newRate));
+
         ReviewMapper.INSTANCE.mutateReview(review, updateRequest);
         repository.save(review);
 

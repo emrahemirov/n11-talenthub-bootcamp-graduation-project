@@ -7,7 +7,7 @@ public record ReviewSaveRequest(
         @NotNull
         Long userId,
         @NotNull
-        Long restaurantId,
+        String restaurantId,
         String comment,
         @NotNull
         ReviewRate rate

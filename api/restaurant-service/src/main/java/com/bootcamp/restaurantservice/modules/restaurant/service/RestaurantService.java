@@ -3,12 +3,14 @@ package com.bootcamp.restaurantservice.modules.restaurant.service;
 import com.bootcamp.restaurantservice.advice.responseexceptionhandler.ErrorMessage;
 import com.bootcamp.restaurantservice.advice.responseexceptionhandler.exceptions.ItemNotFoundException;
 import com.bootcamp.restaurantservice.modules.restaurant.client.RestaurantSolrClient;
+import com.bootcamp.restaurantservice.modules.restaurant.client.UserAddressFeignClient;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantMapper;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantResponse;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantSaveRequest;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantUpdateRequest;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.averagerate.AverageRateUpdateRequest;
-import com.bootcamp.restaurantservice.modules.restaurant.dto.averagerate.AverageRateUpdateType;
+import com.bootcamp.restaurantservice.modules.restaurant.dto.averagerate.ReviewRate;
+import com.bootcamp.restaurantservice.modules.restaurant.dto.useraddress.UserAddressResponse;
 import com.bootcamp.restaurantservice.modules.restaurant.model.Restaurant;
 import com.bootcamp.restaurantservice.modules.restaurant.repository.RestaurantRepository;
 import com.bootcamp.restaurantservice.shared.QueryParams;
@@ -19,6 +21,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +29,7 @@ public class RestaurantService {
 
     private final RestaurantRepository repository;
     private final RestaurantSolrClient restaurantSolrClient;
+    private final UserAddressFeignClient feignClient;
 
     public RestaurantResponse save(RestaurantSaveRequest saveRequest) {
         Restaurant restaurant = RestaurantMapper.INSTANCE.toRestaurant(saveRequest);
@@ -50,28 +54,38 @@ public class RestaurantService {
         );
     }
 
-    public List<RestaurantResponse> getRecommendedRestaurantsWithin10Km(String latitude, String longitude) {
-        List<Restaurant> restaurantList = restaurantSolrClient.getRecommendedRestaurantsWithin10Km(latitude, longitude);
+    public List<RestaurantResponse> getRecommendedRestaurantsWithin10Km(Long userId) {
+        UserAddressResponse userAddress = Objects.requireNonNull(feignClient.getPreferredUserAddress(userId).getBody()).getData();
+
+        List<Restaurant> restaurantList = restaurantSolrClient.getRecommendedRestaurantsWithin10Km(userAddress.latitude(), userAddress.longitude());
 
         return RestaurantMapper.INSTANCE.toRestaurantResponseList(restaurantList);
-
     }
 
     public void updateAverageRate(AverageRateUpdateRequest updateRequest) {
-        Restaurant restaurant = findRestaurantById(updateRequest.id());
+        Restaurant restaurant = findRestaurantById(updateRequest.restaurantId());
+        ReviewRate newRate = updateRequest.newRate();
+        ReviewRate oldRate = updateRequest.oldRate();
+
+        // newRate == null -> delete
+        // oldRate == null -> add
+        // else -> update
+
         Double currentAverageRate = restaurant.getAverageRate();
         Long currentTotalReviewsCount = restaurant.getTotalReviewsCount();
 
-        Double newAverageRate = currentAverageRate;
+        Double newAverageRate = null;
         Long newTotalReviewsCount = currentTotalReviewsCount;
 
-        if (updateRequest.type() == AverageRateUpdateType.INCREASE) {
+        if (oldRate == null) {
             newTotalReviewsCount = currentTotalReviewsCount + 1;
-            newAverageRate = (currentAverageRate * currentTotalReviewsCount + updateRequest.rate().getValue()) / newTotalReviewsCount;
-        }
-        if (updateRequest.type() == AverageRateUpdateType.DECREASE) {
+            newAverageRate = (currentAverageRate * currentTotalReviewsCount + newRate.getValue()) / newTotalReviewsCount;
+        } else if (newRate == null) {
             newTotalReviewsCount = currentTotalReviewsCount - 1;
-            newAverageRate = (currentAverageRate * currentTotalReviewsCount - updateRequest.rate().getValue()) / newTotalReviewsCount;
+            newAverageRate = (currentAverageRate * currentTotalReviewsCount + oldRate.getValue()) / newTotalReviewsCount;
+        } else {
+            double updateRate = oldRate.getValue() - newRate.getValue();
+            newAverageRate = (currentAverageRate * currentTotalReviewsCount + updateRate) / newTotalReviewsCount;
         }
 
         restaurant.setAverageRate(newAverageRate);
