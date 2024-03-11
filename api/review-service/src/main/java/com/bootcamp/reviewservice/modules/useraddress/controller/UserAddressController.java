@@ -32,6 +32,12 @@ public class UserAddressController {
         return new ResponseEntity<>(RestResponse.of(userAddressResponseList), HttpStatus.OK);
     }
 
+    @GetMapping("/preferred")
+    public ResponseEntity<RestResponse<UserAddressResponse>> getPreferredUserAddress(@RequestParam Long userId) {
+        UserAddressResponse userAddressResponse = service.getPreferredUserAddress(userId);
+        return new ResponseEntity<>(RestResponse.of(userAddressResponse), HttpStatus.OK);
+    }
+
 
     @PutMapping("/{debugId}")
     public ResponseEntity<RestResponse<UserAddressResponse>> update(@PathVariable Long debugId, @Valid @RequestBody UserAddressUpdateRequest updateRequest) {

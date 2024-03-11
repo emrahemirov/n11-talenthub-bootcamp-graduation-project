@@ -39,6 +39,13 @@ public class UserAddressService {
         return UserAddressMapper.INSTANCE.toUserAddressResponseList(userAddressList);
     }
 
+    public UserAddressResponse getPreferredUserAddress(Long userId) {
+        UserAddress userAddress = repository.findByUserIdAndIsPreferredTrue(userId)
+                .orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_ADDRESS_NOT_FOUND));
+
+        return UserAddressMapper.INSTANCE.toUserAddressResponse(userAddress);
+    }
+
 
     public void delete(Long id) {
         UserAddress userAddress = findUserAddressById(id);

@@ -1,4 +1,4 @@
-package com.bootcamp.restaurantservice.modules.restaurant.dto;
+package com.bootcamp.restaurantservice.modules.restaurant.dto.averagerate;
 
 public record AverageRateUpdateRequest(
         String id,

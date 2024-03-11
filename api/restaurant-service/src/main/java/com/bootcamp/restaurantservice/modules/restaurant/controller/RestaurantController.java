@@ -1,9 +1,9 @@
 package com.bootcamp.restaurantservice.modules.restaurant.controller;
 
-import com.bootcamp.restaurantservice.modules.restaurant.dto.AverageRateUpdateRequest;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantResponse;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantSaveRequest;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantUpdateRequest;
+import com.bootcamp.restaurantservice.modules.restaurant.dto.averagerate.AverageRateUpdateRequest;
 import com.bootcamp.restaurantservice.modules.restaurant.service.RestaurantService;
 import com.bootcamp.restaurantservice.shared.QueryParams;
 import com.bootcamp.restaurantservice.shared.RestResponse;
