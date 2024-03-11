@@ -29,9 +29,7 @@ public class RestaurantController {
     }
 
     @GetMapping
-    public ResponseEntity<RestResponse<WithPagination<RestaurantResponse>>> findAll(
-            @RequestParam(required = false) QueryParams queryParams
-    ) {
+    public ResponseEntity<RestResponse<WithPagination<RestaurantResponse>>> findAll(QueryParams queryParams) {
         WithPagination<RestaurantResponse> responseWithPagination = service.findAll(queryParams);
         return new ResponseEntity<>(RestResponse.of(responseWithPagination), HttpStatus.OK);
     }

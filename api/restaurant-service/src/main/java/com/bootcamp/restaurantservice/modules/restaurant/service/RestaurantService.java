@@ -34,9 +34,8 @@ public class RestaurantService {
     }
 
     public WithPagination<RestaurantResponse> findAll(QueryParams queryParams) {
-        QueryParams params = queryParams != null ? queryParams : new QueryParams();
 
-        Page<Restaurant> restaurantPage = repository.findAll(PageRequest.of(params.getPage(), params.getSize()));
+        Page<Restaurant> restaurantPage = repository.findAll(PageRequest.of(queryParams.getPage(), queryParams.getSize()));
         List<RestaurantResponse> restaurantResponseList = RestaurantMapper.INSTANCE.toRestaurantResponseList(restaurantPage.getContent());
 
 

@@ -27,9 +27,7 @@ public class ReviewController {
     }
 
     @GetMapping
-    public ResponseEntity<RestResponse<WithPagination<ReviewResponse>>> findAll(
-            @RequestParam(required = false) QueryParams queryParams
-    ) {
+    public ResponseEntity<RestResponse<WithPagination<ReviewResponse>>> findAll(QueryParams queryParams) {
         WithPagination<ReviewResponse> responseWithPagination = service.findAll(queryParams);
         return new ResponseEntity<>(RestResponse.of(responseWithPagination), HttpStatus.OK);
     }

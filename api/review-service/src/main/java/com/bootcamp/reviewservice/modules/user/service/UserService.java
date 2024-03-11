@@ -30,10 +30,7 @@ public class UserService {
     }
 
     public WithPagination<UserResponse> findAll(QueryParams queryParams) {
-        QueryParams params = queryParams != null ? queryParams : new QueryParams();
-
-
-        Page<User> userPage = repository.findAll(PageRequest.of(params.getPage(), params.getSize()));
+        Page<User> userPage = repository.findAll(PageRequest.of(queryParams.getPage(), queryParams.getSize()));
         List<UserResponse> userResponseList = UserMapper.INSTANCE.toUserResponseList(userPage.getContent());
         return WithPagination.of(userPage, userResponseList);
     }

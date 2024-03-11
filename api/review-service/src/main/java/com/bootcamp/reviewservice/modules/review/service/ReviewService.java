@@ -37,9 +37,7 @@ public class ReviewService {
     }
 
     public WithPagination<ReviewResponse> findAll(QueryParams queryParams) {
-        QueryParams params = queryParams != null ? queryParams : new QueryParams();
-
-        Page<Review> reviewPage = repository.findAll(PageRequest.of(params.getPage(), params.getSize()));
+        Page<Review> reviewPage = repository.findAll(PageRequest.of(queryParams.getPage(), queryParams.getSize()));
         List<ReviewResponse> reviewResponseList = ReviewMapper.INSTANCE.toReviewResponseList(reviewPage.getContent());
         return WithPagination.of(reviewPage, reviewResponseList);
     }

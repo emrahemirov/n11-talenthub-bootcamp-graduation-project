@@ -28,9 +28,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<RestResponse<WithPagination<UserResponse>>> getAll(
-            @RequestParam(required = false) QueryParams queryParams
-    ) {
+    public ResponseEntity<RestResponse<WithPagination<UserResponse>>> getAll(QueryParams queryParams) {
         WithPagination<UserResponse> userResponseWithPagination = service.findAll(queryParams);
         return new ResponseEntity<>(RestResponse.of(userResponseWithPagination), HttpStatus.OK);
     }
