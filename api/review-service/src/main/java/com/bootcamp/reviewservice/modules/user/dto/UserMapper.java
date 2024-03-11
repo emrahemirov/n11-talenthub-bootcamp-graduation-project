@@ -2,6 +2,7 @@ package com.bootcamp.reviewservice.modules.user.dto;
 
 import com.bootcamp.reviewservice.modules.user.model.User;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -21,4 +22,5 @@ public interface UserMapper {
 
     User toUser(UserUpdateRequest dto);
 
+    void mutateUser(@MappingTarget User entity, UserUpdateRequest dto);
 }

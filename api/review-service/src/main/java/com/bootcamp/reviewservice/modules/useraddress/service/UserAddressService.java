@@ -27,8 +27,9 @@ public class UserAddressService {
         User user = userService.findUserById(saveRequest.userId());
         UserAddress userAddressWithUser = UserAddressMapper.INSTANCE.toUserAddress(saveRequest);
         userAddressWithUser.setUser(user);
-
         UserAddress userAddress = repository.save(userAddressWithUser);
+
+        changePreferredUserAddress(saveRequest.userId(), userAddress.getId());
 
         return UserAddressMapper.INSTANCE.toUserAddressResponse(userAddress);
     }
@@ -46,12 +47,17 @@ public class UserAddressService {
 
 
     public UserAddressResponse update(UserAddressUpdateRequest updateRequest) {
-        UserAddress currentUserAddress = findUserAddressById(updateRequest.id());
-        UserAddress userAddressToUpdate = UserAddressMapper.INSTANCE.toUserAddress(updateRequest);
-        userAddressToUpdate.setUser(currentUserAddress.getUser());
+        UserAddress userAddress = findUserAddressById(updateRequest.id());
+        UserAddressMapper.INSTANCE.mutateUserAddress(userAddress, updateRequest);
+        repository.save(userAddress);
 
-        UserAddress updatedUserAddress = repository.save(userAddressToUpdate);
-        return UserAddressMapper.INSTANCE.toUserAddressResponse(updatedUserAddress);
+        return UserAddressMapper.INSTANCE.toUserAddressResponse(userAddress);
+    }
+
+    public void changePreferredUserAddress(Long userId, Long userAddressId) {
+        List<UserAddress> userAddressList = repository.findAllByUserId(userId);
+        userAddressList.forEach(userAddress -> userAddress.setIsPreferred(userAddress.getId().equals(userAddressId)));
+        repository.saveAll(userAddressList);
     }
 
 

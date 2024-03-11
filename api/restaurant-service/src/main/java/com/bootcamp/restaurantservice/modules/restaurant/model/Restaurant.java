@@ -3,52 +3,37 @@ package com.bootcamp.restaurantservice.modules.restaurant.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.solr.core.mapping.Indexed;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
 import java.util.UUID;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @SolrDocument(collection = "restaurants")
 public class Restaurant {
-
     @Id
-    @Indexed(name = "id", type = "string")
+    @Field
     private String id;
-    @Indexed(name = "geo", type = "string", required = true)
+    @Field
+    private String name;
+    @Field
     private String geo;
-    @Indexed(name = "address_line", type = "string", required = true)
-    private String addressLine;
-    @Indexed(name = "building_number", type = "string", required = true)
-    private String buildingNumber;
-    @Indexed(name = "floor", type = "string")
-    private String floor;
-    @Indexed(name = "apartment_number", type = "string")
-    private String apartmentNumber;
-    @Indexed(name = "average_rate", type = "double", required = true)
+    @Field
     private Double averageRate;
-    @Indexed(name = "total_review_count", type = "long", required = true)
-    private Long totalReviewCount;
-
+    @Field
+    private Long totalReviewsCount;
 
     public Restaurant() {
         this.id = UUID.randomUUID().toString();
     }
 
-    @Override
-    public String toString() {
-        return "Restaurant{" +
-                "id='" + id + '\'' +
-                ", geo='" + geo + '\'' +
-                ", addressLine='" + addressLine + '\'' +
-                ", buildingNumber='" + buildingNumber + '\'' +
-                ", floor='" + floor + '\'' +
-                ", apartmentNumber='" + apartmentNumber + '\'' +
-                '}';
-    }
-
 
 }
+
+
+
+

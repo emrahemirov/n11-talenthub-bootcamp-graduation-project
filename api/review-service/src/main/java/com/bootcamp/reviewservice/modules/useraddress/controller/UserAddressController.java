@@ -44,4 +44,10 @@ public class UserAddressController {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PatchMapping("/{id}/preferred")
+    public ResponseEntity<HttpStatus> changePreferredUserAddress(@PathVariable Long id, @RequestParam Long userId) {
+        service.changePreferredUserAddress(userId, id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

@@ -25,9 +25,6 @@ public class User extends BaseEntity {
     @Column(name = "surname", length = 50, nullable = false)
     private String surname;
 
-    @Column(name = "status")
-    @Enumerated(value = EnumType.STRING)
-    private UserStatus status;
 
     @Override
     public String toString() {
@@ -35,7 +32,6 @@ public class User extends BaseEntity {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", status=" + status +
                 '}';
     }
 }

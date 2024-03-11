@@ -1,5 +1,4 @@
-package com.bootcamp.reviewservice.modules.review.model;
-
+package com.bootcamp.restaurantservice.modules.restaurant.dto;
 
 public enum ReviewRate {
     ONE(1D),

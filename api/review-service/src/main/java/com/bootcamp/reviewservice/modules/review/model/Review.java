@@ -30,9 +30,6 @@ public class Review extends BaseEntity {
     @Column(name = "comment")
     private String comment;
 
-    @Column(name = "status")
-    @Enumerated(value = EnumType.STRING)
-    private ReviewStatus status;
 
     @Transient
     private Long userId;
@@ -48,7 +45,6 @@ public class Review extends BaseEntity {
                 ", restaurantId=" + restaurantId +
                 ", rate=" + rate +
                 ", comment='" + comment + '\'' +
-                ", status=" + status +
                 ", user=" + user +
                 '}';
     }

@@ -7,10 +7,10 @@ import com.bootcamp.reviewservice.modules.review.dto.ReviewResponse;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewSaveRequest;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewUpdateRequest;
 import com.bootcamp.reviewservice.modules.review.model.Review;
-import com.bootcamp.reviewservice.modules.review.model.ReviewStatus;
 import com.bootcamp.reviewservice.modules.review.repository.ReviewRepository;
 import com.bootcamp.reviewservice.modules.user.model.User;
 import com.bootcamp.reviewservice.modules.user.service.UserService;
+import com.bootcamp.reviewservice.shared.QueryParams;
 import com.bootcamp.reviewservice.shared.WithPagination;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -36,8 +36,10 @@ public class ReviewService {
         return ReviewMapper.INSTANCE.toReviewResponse(review);
     }
 
-    public WithPagination<ReviewResponse> findAll(Integer page, Integer size) {
-        Page<Review> reviewPage = repository.findAll(PageRequest.of(page, size));
+    public WithPagination<ReviewResponse> findAll(QueryParams queryParams) {
+        QueryParams params = queryParams != null ? queryParams : new QueryParams();
+
+        Page<Review> reviewPage = repository.findAll(PageRequest.of(params.getPage(), params.getSize()));
         List<ReviewResponse> reviewResponseList = ReviewMapper.INSTANCE.toReviewResponseList(reviewPage.getContent());
         return WithPagination.of(reviewPage, reviewResponseList);
     }
@@ -50,31 +52,11 @@ public class ReviewService {
 
 
     public ReviewResponse update(ReviewUpdateRequest updateRequest) {
-        Review currentReview = findReviewById(updateRequest.id());
-        Review reviewToUpdate = ReviewMapper.INSTANCE.toReview(updateRequest);
-        reviewToUpdate.setUser(currentReview.getUser());
-        reviewToUpdate.setRestaurantId(currentReview.getRestaurantId());
+        Review review = findReviewById(updateRequest.id());
+        ReviewMapper.INSTANCE.mutateReview(review, updateRequest);
+        repository.save(review);
 
-        Review updatedReview = repository.save(reviewToUpdate);
-        return ReviewMapper.INSTANCE.toReviewResponse(updatedReview);
-    }
-
-    public ReviewResponse activate(Long id) {
-        Review updatedReview = updateStatus(id, ReviewStatus.ACTIVE);
-
-        return ReviewMapper.INSTANCE.toReviewResponse(updatedReview);
-    }
-
-    public ReviewResponse deactivate(Long id) {
-        Review updatedReview = updateStatus(id, ReviewStatus.INACTIVE);
-
-        return ReviewMapper.INSTANCE.toReviewResponse(updatedReview);
-    }
-
-    private Review updateStatus(Long id, ReviewStatus status) {
-        Review foundReview = findReviewById(id);
-        foundReview.setStatus(status);
-        return repository.save(foundReview);
+        return ReviewMapper.INSTANCE.toReviewResponse(review);
     }
 
 

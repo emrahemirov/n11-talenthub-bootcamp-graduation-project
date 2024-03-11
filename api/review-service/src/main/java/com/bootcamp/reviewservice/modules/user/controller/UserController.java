@@ -5,6 +5,7 @@ import com.bootcamp.reviewservice.modules.user.dto.UserResponse;
 import com.bootcamp.reviewservice.modules.user.dto.UserSaveRequest;
 import com.bootcamp.reviewservice.modules.user.dto.UserUpdateRequest;
 import com.bootcamp.reviewservice.modules.user.service.UserService;
+import com.bootcamp.reviewservice.shared.QueryParams;
 import com.bootcamp.reviewservice.shared.RestResponse;
 import com.bootcamp.reviewservice.shared.WithPagination;
 import jakarta.validation.Valid;
@@ -28,10 +29,9 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<RestResponse<WithPagination<UserResponse>>> getAll(
-            @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "20") Integer size
+            @RequestParam(required = false) QueryParams queryParams
     ) {
-        WithPagination<UserResponse> userResponseWithPagination = service.findAll(page, size);
+        WithPagination<UserResponse> userResponseWithPagination = service.findAll(queryParams);
         return new ResponseEntity<>(RestResponse.of(userResponseWithPagination), HttpStatus.OK);
     }
 
@@ -46,17 +46,5 @@ public class UserController {
     public ResponseEntity<HttpStatus> delete(@PathVariable Long id) {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @PatchMapping("/{id}/activate")
-    public ResponseEntity<RestResponse<UserResponse>> activate(@PathVariable Long id) {
-        UserResponse userResponse = service.activate(id);
-        return new ResponseEntity<>(RestResponse.of(userResponse), HttpStatus.OK);
-    }
-
-    @PatchMapping("/{id}/deactivate")
-    public ResponseEntity<RestResponse<UserResponse>> deactivate(@PathVariable Long id) {
-        UserResponse userResponse = service.deactivate(id);
-        return new ResponseEntity<>(RestResponse.of(userResponse), HttpStatus.OK);
     }
 }

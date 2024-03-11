@@ -3,7 +3,9 @@ package com.bootcamp.restaurantservice.modules.restaurant.dto;
 public record RestaurantResponse(
         String id,
         String geo,
-        String addressLine
+        String name,
+        Double averageRate,
+        Long totalReviewCount
 ) {
 
 }

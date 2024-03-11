@@ -16,6 +16,7 @@ import lombok.Setter;
 @Table(name = "user_addresses")
 public class UserAddress extends BaseEntity {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,6 +41,9 @@ public class UserAddress extends BaseEntity {
 
     @Column(name = "apartment_number", length = 10)
     private String apartmentNumber;
+
+    @Column(name = "is_preferred")
+    private Boolean isPreferred;
 
     @Column(name = "address_type")
     @Enumerated(value = EnumType.STRING)

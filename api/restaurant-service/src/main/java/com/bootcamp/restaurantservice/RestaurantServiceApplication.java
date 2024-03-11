@@ -6,8 +6,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 
 @SpringBootApplication
-@EnableSolrRepositories
 @EnableEurekaClient
+@EnableSolrRepositories
 public class RestaurantServiceApplication {
 
     public static void main(String[] args) {

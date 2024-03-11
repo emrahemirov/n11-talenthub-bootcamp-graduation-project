@@ -2,6 +2,7 @@ package com.bootcamp.restaurantservice.modules.restaurant.dto;
 
 import com.bootcamp.restaurantservice.modules.restaurant.model.Restaurant;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -19,6 +20,5 @@ public interface RestaurantMapper {
 
     Restaurant toRestaurant(RestaurantSaveRequest dto);
 
-    Restaurant toRestaurant(RestaurantUpdateRequest dto);
-
+    void mutateRestaurant(@MappingTarget Restaurant entity, RestaurantUpdateRequest dto);
 }

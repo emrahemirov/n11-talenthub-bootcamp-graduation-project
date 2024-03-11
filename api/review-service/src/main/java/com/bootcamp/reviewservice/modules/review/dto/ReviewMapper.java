@@ -2,6 +2,7 @@ package com.bootcamp.reviewservice.modules.review.dto;
 
 import com.bootcamp.reviewservice.modules.review.model.Review;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -20,6 +21,6 @@ public interface ReviewMapper {
     //    @Mapping(target = "status", constant = "INACTIVE")
     Review toReview(ReviewSaveRequest dto);
 
-    Review toReview(ReviewUpdateRequest dto);
+    void mutateReview(@MappingTarget Review entity, ReviewUpdateRequest dto);
 
 }

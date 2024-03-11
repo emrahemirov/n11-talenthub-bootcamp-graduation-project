@@ -2,6 +2,7 @@ package com.bootcamp.reviewservice.modules.useraddress.dto;
 
 import com.bootcamp.reviewservice.modules.useraddress.model.UserAddress;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -21,4 +22,5 @@ public interface UserAddressMapper {
 
     UserAddress toUserAddress(UserAddressUpdateRequest dto);
 
+    void mutateUserAddress(@MappingTarget UserAddress entity, UserAddressUpdateRequest dto);
 }

@@ -7,11 +7,10 @@ import com.bootcamp.reviewservice.modules.user.dto.UserResponse;
 import com.bootcamp.reviewservice.modules.user.dto.UserSaveRequest;
 import com.bootcamp.reviewservice.modules.user.dto.UserUpdateRequest;
 import com.bootcamp.reviewservice.modules.user.model.User;
-import com.bootcamp.reviewservice.modules.user.model.UserStatus;
 import com.bootcamp.reviewservice.modules.user.repository.UserRepository;
+import com.bootcamp.reviewservice.shared.QueryParams;
 import com.bootcamp.reviewservice.shared.WithPagination;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -30,15 +29,14 @@ public class UserService {
         return UserMapper.INSTANCE.toUserResponse(user);
     }
 
-    public WithPagination<UserResponse> findAll(Integer page, Integer size) {
-        Page<User> userPage = repository.findAll(PageRequest.of(page, size));
-        List<UserResponse> userResponseList = UserMapper.INSTANCE.toUserResponseList(userPage.getContent());
-        return WithPagination.of(
-                userPage,
-                userResponseList
-        );
-    }
+    public WithPagination<UserResponse> findAll(QueryParams queryParams) {
+        QueryParams params = queryParams != null ? queryParams : new QueryParams();
 
+
+        Page<User> userPage = repository.findAll(PageRequest.of(params.getPage(), params.getSize()));
+        List<UserResponse> userResponseList = UserMapper.INSTANCE.toUserResponseList(userPage.getContent());
+        return WithPagination.of(userPage, userResponseList);
+    }
 
     public void delete(Long id) {
         User user = findUserById(id);
@@ -46,31 +44,13 @@ public class UserService {
     }
 
     public UserResponse update(UserUpdateRequest updateRequest) {
-        User foundUser = findUserById(updateRequest.id());
-        User userToUpdate = UserMapper.INSTANCE.toUser(updateRequest);
-        BeanUtils.copyProperties(userToUpdate, foundUser);
+        User user = findUserById(updateRequest.id());
+        UserMapper.INSTANCE.mutateUser(user, updateRequest);
+        repository.save(user);
 
-        User updatedUser = repository.save(foundUser);
-        return UserMapper.INSTANCE.toUserResponse(updatedUser);
+        return UserMapper.INSTANCE.toUserResponse(user);
     }
 
-    public UserResponse activate(Long id) {
-        User updatedUser = updateStatus(id, UserStatus.ACTIVE);
-
-        return UserMapper.INSTANCE.toUserResponse(updatedUser);
-    }
-
-    public UserResponse deactivate(Long id) {
-        User updatedUser = updateStatus(id, UserStatus.INACTIVE);
-
-        return UserMapper.INSTANCE.toUserResponse(updatedUser);
-    }
-
-    private User updateStatus(Long id, UserStatus status) {
-        User foundUser = findUserById(id);
-        foundUser.setStatus(status);
-        return repository.save(foundUser);
-    }
 
     public User findUserById(Long id) {
         return repository.findById(id).orElseThrow(() -> new ItemNotFoundException(ErrorMessage.USER_NOT_FOUND));
