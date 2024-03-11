@@ -5,7 +5,7 @@ public record RestaurantResponse(
         String geo,
         String name,
         Double averageRate,
-        Long totalReviewCount
+        Long totalReviewsCount
 ) {
 
 }

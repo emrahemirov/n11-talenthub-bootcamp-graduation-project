@@ -27,6 +27,7 @@ public class RestaurantService {
         restaurant.setGeo(saveRequest.latitude() + "," + saveRequest.longitude());
         restaurant.setAverageRate(5D);
         restaurant.setTotalReviewsCount(50L);
+
         repository.save(restaurant);
 
         return RestaurantMapper.INSTANCE.toRestaurantResponse(restaurant);
