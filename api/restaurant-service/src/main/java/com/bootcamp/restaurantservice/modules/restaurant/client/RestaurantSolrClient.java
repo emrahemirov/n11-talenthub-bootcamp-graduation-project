@@ -34,7 +34,7 @@ public class RestaurantSolrClient {
 
     public List<Restaurant> getRecommendedRestaurantsWithin10Km(String latitude, String longitude) {
         HttpSolrClient solrClient = new HttpSolrClient.Builder(this.SOLR_HOST + "/restaurants").build();
-
+       
         try {
             QueryResponse queryResponse = solrClient.query(getQueryParams(latitude, longitude));
             solrClient.close();
@@ -55,7 +55,6 @@ public class RestaurantSolrClient {
             return restaurantList;
 
         } catch (SolrServerException | IOException e) {
-            e.printStackTrace();
             return Collections.emptyList();
         }
     }

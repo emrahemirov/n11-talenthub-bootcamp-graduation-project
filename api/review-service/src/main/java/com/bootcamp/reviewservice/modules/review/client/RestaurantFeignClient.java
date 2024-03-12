@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-@FeignClient(name = "userClient", url = "${restaurant-service.url}" + "/api/restaurants", configuration = FeignConfig.class)
+@FeignClient(name = "restaurantClient", url = "${restaurant-service.url}" + "/api/restaurants", configuration = FeignConfig.class)
 public interface RestaurantFeignClient {
 
     @PatchMapping("/{debugId}/average-review")
