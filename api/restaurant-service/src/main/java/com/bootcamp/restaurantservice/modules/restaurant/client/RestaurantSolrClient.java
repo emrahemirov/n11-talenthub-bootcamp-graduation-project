@@ -26,7 +26,7 @@ public class RestaurantSolrClient {
 
         queryParamMap.put("q", "*:*");
         queryParamMap.put("fq", "{!geofilt pt=" + searchedGeo + " sfield=geo d=10}");
-        queryParamMap.put("sort", "sum(mul(div(averageRate,5),7),mul(div(sub(10,geodist(" + searchedGeo + ",geo)),10),3)) desc");
+        queryParamMap.put("sort", "mul(mul(div(averageRate,5),7),mul(div(sub(10,geodist(" + searchedGeo + ",geo)),10),3)) desc");
         queryParamMap.put("rows", "3");
 
         return new MapSolrParams(queryParamMap);
@@ -34,7 +34,7 @@ public class RestaurantSolrClient {
 
     public List<Restaurant> getRecommendedRestaurantsWithin10Km(String latitude, String longitude) {
         HttpSolrClient solrClient = new HttpSolrClient.Builder(this.SOLR_HOST + "/restaurants").build();
-       
+
         try {
             QueryResponse queryResponse = solrClient.query(getQueryParams(latitude, longitude));
             solrClient.close();

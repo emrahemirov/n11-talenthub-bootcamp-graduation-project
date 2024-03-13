@@ -18,12 +18,21 @@ public class Restaurant {
     @Id
     @Indexed(name = "id", type = "string")
     private String id;
+
     @Indexed(name = "name", type = "string")
     private String name;
+
     @Indexed(name = "geo", type = "location")
     private String geo;
+
     @Indexed(name = "averageRate", type = "pdouble")
     private Double averageRate;
+
+//     <field name="geo" type="location" indexed="true" stored="true" multiValued="false"/>
+//    <field name="name" type="string" indexed="true" stored="true" multiValued="false"/>
+//    <field name="averageRate" type="pdouble" indexed="true" stored="true" multiValued="false"/>
+//    <field name="totalReviewsCount" type="plong" indexed="true" stored="true" multiValued="false"/>
+
     @Indexed(name = "totalReviewsCount", type = "plong")
     private Long totalReviewsCount;
 

@@ -41,7 +41,7 @@ public class RestaurantController {
         return new ResponseEntity<>(RestResponse.of(recommendedRestaurants), HttpStatus.OK);
     }
 
-    @PatchMapping("/{debugId}/average-review")
+    @PutMapping("/{debugId}/average-review")
     public ResponseEntity<HttpStatus> updateAverageReview(@PathVariable String debugId, @Valid @RequestBody AverageRateUpdateRequest updateRequest) {
         service.updateAverageRate(updateRequest);
         return new ResponseEntity<>(HttpStatus.OK);
