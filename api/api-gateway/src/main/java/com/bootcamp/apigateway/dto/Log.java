@@ -1,4 +1,4 @@
-package com.bootcamp.logservice.model;
+package com.bootcamp.apigateway.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +29,3 @@ public class Log {
                 '}';
     }
 }
-
-

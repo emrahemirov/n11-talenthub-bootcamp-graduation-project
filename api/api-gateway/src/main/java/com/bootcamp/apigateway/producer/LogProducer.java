@@ -1,17 +1,23 @@
 package com.bootcamp.apigateway.producer;
 
-import com.bootcamp.apigateway.model.Log;
+import com.bootcamp.apigateway.dto.Log;
 import lombok.RequiredArgsConstructor;
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class LogProducer {
 
-    private final KafkaTemplate<String, Log> kafkaTemplate;
+    private final RabbitTemplate template;
 
-    public void sendLog(String topic, Log log) {
-        kafkaTemplate.send(topic, log);
+    @Value("${rabbitmq.exchange.name}")
+    private String exchangeName;
+    @Value("${rabbitmq.routing-key.name}")
+    private String routingKeyName;
+
+    public void sendLog(Log log) {
+        template.convertAndSend(exchangeName, routingKeyName, log);
     }
 }

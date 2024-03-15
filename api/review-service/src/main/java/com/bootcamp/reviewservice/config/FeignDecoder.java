@@ -1,4 +1,4 @@
-package com.bootcamp.reviewservice.config.feign;
+package com.bootcamp.reviewservice.config;
 
 import com.bootcamp.reviewservice.advice.responseexceptionhandler.ErrorMessage;
 import com.bootcamp.reviewservice.advice.responseexceptionhandler.exceptions.ItemNotFoundException;

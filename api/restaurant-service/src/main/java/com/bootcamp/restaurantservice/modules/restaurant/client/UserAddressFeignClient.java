@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@FeignClient(name = "userClient", url = "${review-service.url}" + "/api/user-addresses", configuration = FeignConfig.class)
+@FeignClient(name = "userClient", url = "REVIEW-SERVICE" + "/api/user-addresses", configuration = FeignConfig.class)
 public interface UserAddressFeignClient {
 
     @GetMapping("/preferred")
