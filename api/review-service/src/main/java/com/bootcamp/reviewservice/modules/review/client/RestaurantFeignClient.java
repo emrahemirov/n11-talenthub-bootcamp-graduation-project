@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-@FeignClient(name = "restaurantClient", url = "RESTAURANT-SERVICE" + "/api/restaurants", configuration = FeignConfig.class)
+@FeignClient(name = "restaurantClient", url = "${restaurant-service-url}" + "/api/restaurants", configuration = FeignConfig.class)
 public interface RestaurantFeignClient {
 
     @PutMapping("/{debugId}/average-review")

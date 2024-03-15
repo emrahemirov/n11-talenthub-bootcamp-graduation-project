@@ -1,4 +1,4 @@
-db = db.getSiblingDB('log');
+db = db.getSiblingDB('logs');
 
 db.createCollection("logs");
 

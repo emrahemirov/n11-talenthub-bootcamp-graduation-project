@@ -39,7 +39,6 @@ services:
       - "5432:5432"
     networks:
       - bootcamp_n11
-    restart: unless-stopped
 
   mongo:
     image: mongo
