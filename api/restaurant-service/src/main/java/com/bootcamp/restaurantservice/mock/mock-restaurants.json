@@ -1,0 +1,802 @@
+[
+  {
+    "name": "Labadie and Sons",
+    "latitude": 38.436523,
+    "longitude": 27.14491,
+    "averageRate": 3.27,
+    "totalReviewsCount": 1023,
+    "id": "ad8ffdab-af63-4141-8d99-1583d12a0a7c"
+  },
+  {
+    "name": "Keebler LLC",
+    "latitude": 38.43384,
+    "longitude": 27.206424,
+    "averageRate": 2.04,
+    "totalReviewsCount": 1236,
+    "id": "39f0f490-bb1d-4feb-b810-5ee74f4fab3f"
+  },
+  {
+    "name": "Keebler-Hane",
+    "latitude": 38.399994,
+    "longitude": 27.171727,
+    "averageRate": 3.37,
+    "totalReviewsCount": 589,
+    "id": "6f1a1239-59bb-4ea1-bf54-3a7be543717e"
+  },
+  {
+    "name": "Macejkovic and Sons",
+    "latitude": 38.415707,
+    "longitude": 27.126474,
+    "averageRate": 2.63,
+    "totalReviewsCount": 688,
+    "id": "8477d93f-0d0d-4492-ac9a-050514cf01ce"
+  },
+  {
+    "name": "Monahan LLC",
+    "latitude": 38.411311,
+    "longitude": 27.132055,
+    "averageRate": 2.62,
+    "totalReviewsCount": 1042,
+    "id": "6c9a1de4-9e7d-4e3d-bb3a-701dc39414bf"
+  },
+  {
+    "name": "Veum and Sons",
+    "latitude": 38.432161,
+    "longitude": 27.129647,
+    "averageRate": 2.47,
+    "totalReviewsCount": 478,
+    "id": "ea4350cf-764e-4a22-b112-bb3d1b5725d0"
+  },
+  {
+    "name": "Sawayn-Kemmer",
+    "latitude": 38.387444,
+    "longitude": 27.201719,
+    "averageRate": 1.16,
+    "totalReviewsCount": 1207,
+    "id": "6750ea02-3142-4172-b5e6-e9961fb3dcbf"
+  },
+  {
+    "name": "Kuhlman, Little and Stamm",
+    "latitude": 38.412669,
+    "longitude": 27.214982,
+    "averageRate": 2.37,
+    "totalReviewsCount": 336,
+    "id": "4cda00fe-6ab7-491a-a953-4e933403ca52"
+  },
+  {
+    "name": "McGlynn, Wehner and Frami",
+    "latitude": 38.392567,
+    "longitude": 27.149787,
+    "averageRate": 1.26,
+    "totalReviewsCount": 1149,
+    "id": "7be4b8aa-73ef-442c-a77c-03942ca97254"
+  },
+  {
+    "name": "Barton Group",
+    "latitude": 38.42844,
+    "longitude": 27.152936,
+    "averageRate": 2.67,
+    "totalReviewsCount": 344,
+    "id": "7eb844e5-24b1-471c-acc8-862eaab0f5ea"
+  },
+  {
+    "name": "Stokes, Powlowski and Schmidt",
+    "latitude": 38.392119,
+    "longitude": 27.125033,
+    "averageRate": 3.63,
+    "totalReviewsCount": 591,
+    "id": "1dcc010a-304b-405e-910d-b25c193c4d14"
+  },
+  {
+    "name": "Johnson-Kohler",
+    "latitude": 38.430508,
+    "longitude": 27.143702,
+    "averageRate": 2.35,
+    "totalReviewsCount": 1177,
+    "id": "75283923-8e13-4290-b2d1-557a7b0a0ff7"
+  },
+  {
+    "name": "Roob, Kuhlman and Botsford",
+    "latitude": 38.400346,
+    "longitude": 27.125142,
+    "averageRate": 3.68,
+    "totalReviewsCount": 561,
+    "id": "16d8849f-80a5-4389-baff-f20600a49775"
+  },
+  {
+    "name": "Schimmel and Sons",
+    "latitude": 38.3985,
+    "longitude": 27.144599,
+    "averageRate": 2.18,
+    "totalReviewsCount": 720,
+    "id": "fa4132e6-133b-4651-8f04-204c27d3142a"
+  },
+  {
+    "name": "Hickle, Yundt and Schoen",
+    "latitude": 38.417076,
+    "longitude": 27.158603,
+    "averageRate": 4.09,
+    "totalReviewsCount": 346,
+    "id": "d2a063f5-1856-4e70-95be-9ee3214a9ef5"
+  },
+  {
+    "name": "Hegmann, Jacobson and Daugherty",
+    "latitude": 38.383542,
+    "longitude": 27.133818,
+    "averageRate": 1.76,
+    "totalReviewsCount": 779,
+    "id": "8fed3994-dae2-44fb-9e35-e1beaf0f20e3"
+  },
+  {
+    "name": "Lynch, Jacobi and Reichel",
+    "latitude": 38.382005,
+    "longitude": 27.18793,
+    "averageRate": 4.42,
+    "totalReviewsCount": 668,
+    "id": "3ef74407-27d9-4fb9-bb92-ee92fd49f2e7"
+  },
+  {
+    "name": "Hayes-Runolfsdottir",
+    "latitude": 38.393428,
+    "longitude": 27.200069,
+    "averageRate": 3.39,
+    "totalReviewsCount": 531,
+    "id": "76a405ed-38d9-4aec-8e6d-59c0a745f677"
+  },
+  {
+    "name": "Dibbert, Schmidt and Heller",
+    "latitude": 38.428897,
+    "longitude": 27.154216,
+    "averageRate": 4.61,
+    "totalReviewsCount": 427,
+    "id": "e119fcd7-631b-4631-a0e3-7e3d7ff832d4"
+  },
+  {
+    "name": "Kulas Group",
+    "latitude": 38.429631,
+    "longitude": 27.174946,
+    "averageRate": 3.13,
+    "totalReviewsCount": 846,
+    "id": "6393b43c-4cc4-4359-bdf7-98c072750631"
+  },
+  {
+    "name": "Spencer LLC",
+    "latitude": 38.394824,
+    "longitude": 27.195619,
+    "averageRate": 3.65,
+    "totalReviewsCount": 1229,
+    "id": "17df6ffe-4435-4be2-a6e0-05f34af33699"
+  },
+  {
+    "name": "Aufderhar-Moen",
+    "latitude": 38.40979,
+    "longitude": 27.140187,
+    "averageRate": 2.88,
+    "totalReviewsCount": 928,
+    "id": "10947f8b-3331-4ca0-a972-a5833b4ead44"
+  },
+  {
+    "name": "Russel-Littel",
+    "latitude": 38.390844,
+    "longitude": 27.178324,
+    "averageRate": 4.55,
+    "totalReviewsCount": 1082,
+    "id": "2fdb1db2-5d0e-45d5-97b1-2db954fc008c"
+  },
+  {
+    "name": "Johns-Rice",
+    "latitude": 38.407216,
+    "longitude": 27.204262,
+    "averageRate": 2.8,
+    "totalReviewsCount": 950,
+    "id": "2816ee8d-4dcf-4b79-af2b-c6ee3bd76d84"
+  },
+  {
+    "name": "Cremin, Berge and Heidenreich",
+    "latitude": 38.400194,
+    "longitude": 27.139152,
+    "averageRate": 1.4,
+    "totalReviewsCount": 914,
+    "id": "1103e67b-37d8-407f-9c2a-edefe3727508"
+  },
+  {
+    "name": "Wehner, Conn and Hills",
+    "latitude": 38.437622,
+    "longitude": 27.193647,
+    "averageRate": 2.37,
+    "totalReviewsCount": 532,
+    "id": "ccb53411-81a1-473a-9d3c-3f3c109ad827"
+  },
+  {
+    "name": "Ondricka and Sons",
+    "latitude": 38.386643,
+    "longitude": 27.206615,
+    "averageRate": 2.84,
+    "totalReviewsCount": 724,
+    "id": "98f85376-588a-465c-868a-0852a509199e"
+  },
+  {
+    "name": "Farrell Inc",
+    "latitude": 38.438635,
+    "longitude": 27.192632,
+    "averageRate": 1.67,
+    "totalReviewsCount": 366,
+    "id": "1886dbcd-88f5-4d96-a2f7-ff64483a9105"
+  },
+  {
+    "name": "Flatley Group",
+    "latitude": 38.407238,
+    "longitude": 27.18227,
+    "averageRate": 4.52,
+    "totalReviewsCount": 936,
+    "id": "9d550d14-832b-4f6f-b83e-eeb993a35493"
+  },
+  {
+    "name": "O'Connell, Hartmann and Padberg",
+    "latitude": 38.413814,
+    "longitude": 27.139536,
+    "averageRate": 4.38,
+    "totalReviewsCount": 720,
+    "id": "d10732ae-fe58-478b-9bd1-7bf61b89d3f3"
+  },
+  {
+    "name": "Hahn, Haag and Pouros",
+    "latitude": 38.407667,
+    "longitude": 27.205189,
+    "averageRate": 3.24,
+    "totalReviewsCount": 761,
+    "id": "b55e83b7-18c4-40c1-b545-ee87e340b657"
+  },
+  {
+    "name": "Trantow Inc",
+    "latitude": 38.428552,
+    "longitude": 27.161368,
+    "averageRate": 3.95,
+    "totalReviewsCount": 853,
+    "id": "a4fb9e96-b2f6-440c-a97e-1166edfe3eab"
+  },
+  {
+    "name": "Batz, Hermiston and Stracke",
+    "latitude": 38.38917,
+    "longitude": 27.180198,
+    "averageRate": 1.09,
+    "totalReviewsCount": 1039,
+    "id": "63d77f78-4dd5-41cb-8c7f-c7e888769074"
+  },
+  {
+    "name": "Schneider Group",
+    "latitude": 38.389471,
+    "longitude": 27.145362,
+    "averageRate": 3.7,
+    "totalReviewsCount": 312,
+    "id": "099d6885-74a7-4572-8d07-96a506724de6"
+  },
+  {
+    "name": "Wolf, Zieme and O'Hara",
+    "latitude": 38.435136,
+    "longitude": 27.169641,
+    "averageRate": 4.23,
+    "totalReviewsCount": 443,
+    "id": "ecacd59a-4d78-4cfe-ba7f-c8efe02523dd"
+  },
+  {
+    "name": "Lueilwitz and Sons",
+    "latitude": 38.423567,
+    "longitude": 27.176554,
+    "averageRate": 4.19,
+    "totalReviewsCount": 645,
+    "id": "a4a80671-2c2f-48c6-84c0-41b6afbc81b0"
+  },
+  {
+    "name": "Streich, Wisoky and Murazik",
+    "latitude": 38.403375,
+    "longitude": 27.216125,
+    "averageRate": 3.6,
+    "totalReviewsCount": 1225,
+    "id": "46cd3766-35cd-40ee-8b36-c583eeb9c1fa"
+  },
+  {
+    "name": "Mertz-Wyman",
+    "latitude": 38.418535,
+    "longitude": 27.136736,
+    "averageRate": 3.16,
+    "totalReviewsCount": 1241,
+    "id": "44895c68-e352-432a-a621-38c44275ad0b"
+  },
+  {
+    "name": "Rosenbaum Group",
+    "latitude": 38.382602,
+    "longitude": 27.214119,
+    "averageRate": 4.56,
+    "totalReviewsCount": 329,
+    "id": "f58614b9-d314-4912-a860-54a0286168e9"
+  },
+  {
+    "name": "Schoen-Carroll",
+    "latitude": 38.398104,
+    "longitude": 27.196762,
+    "averageRate": 3.86,
+    "totalReviewsCount": 1004,
+    "id": "afffa15d-3dd5-42ab-b469-fbf994472ef8"
+  },
+  {
+    "name": "Mante LLC",
+    "latitude": 38.435618,
+    "longitude": 27.135869,
+    "averageRate": 2.36,
+    "totalReviewsCount": 479,
+    "id": "0975e695-1b4e-4a30-a180-f2e8618200c8"
+  },
+  {
+    "name": "Lakin and Sons",
+    "latitude": 38.40225,
+    "longitude": 27.129013,
+    "averageRate": 3.3,
+    "totalReviewsCount": 812,
+    "id": "3759056d-326e-4dfe-b6ad-8f56a967d704"
+  },
+  {
+    "name": "Feest, Ruecker and Cassin",
+    "latitude": 38.435779,
+    "longitude": 27.162906,
+    "averageRate": 2.14,
+    "totalReviewsCount": 955,
+    "id": "279941e1-7b8c-4840-80e4-e0baa74ee603"
+  },
+  {
+    "name": "Littel, Nicolas and Graham",
+    "latitude": 38.425049,
+    "longitude": 27.128132,
+    "averageRate": 4.61,
+    "totalReviewsCount": 399,
+    "id": "e0b2d006-1197-45a1-bd9d-6d07fda8c66b"
+  },
+  {
+    "name": "Emard LLC",
+    "latitude": 38.437371,
+    "longitude": 27.151118,
+    "averageRate": 4.51,
+    "totalReviewsCount": 871,
+    "id": "2f95867f-2de7-476c-b028-07e9f4635318"
+  },
+  {
+    "name": "Effertz Inc",
+    "latitude": 38.38129,
+    "longitude": 27.203999,
+    "averageRate": 2.3,
+    "totalReviewsCount": 1191,
+    "id": "5a6b3ef7-2bb6-41f8-88b1-99e41881da35"
+  },
+  {
+    "name": "Davis-Bailey",
+    "latitude": 38.433149,
+    "longitude": 27.177551,
+    "averageRate": 2.32,
+    "totalReviewsCount": 480,
+    "id": "d309283c-6363-4839-a70f-8bd764f68616"
+  },
+  {
+    "name": "Simonis, Schimmel and Yost",
+    "latitude": 38.393239,
+    "longitude": 27.16675,
+    "averageRate": 1.03,
+    "totalReviewsCount": 577,
+    "id": "fc4c49fb-d1a9-4264-94f9-6dcec0af0b78"
+  },
+  {
+    "name": "McCullough-Beahan",
+    "latitude": 38.395138,
+    "longitude": 27.184318,
+    "averageRate": 1.4,
+    "totalReviewsCount": 654,
+    "id": "a6cedff1-b006-4b2f-8248-59175ca298c9"
+  },
+  {
+    "name": "Collins, Homenick and D'Amore",
+    "latitude": 38.405502,
+    "longitude": 27.183934,
+    "averageRate": 1.79,
+    "totalReviewsCount": 1243,
+    "id": "76a1bbc3-79cc-4c64-b38b-2fdb4640362b"
+  },
+  {
+    "name": "Mills, Gorczany and Glover",
+    "latitude": 38.410093,
+    "longitude": 27.194441,
+    "averageRate": 1.32,
+    "totalReviewsCount": 1128,
+    "id": "64730cc4-e4d6-493f-9380-f7d39a810862"
+  },
+  {
+    "name": "Yundt Group",
+    "latitude": 38.408499,
+    "longitude": 27.18317,
+    "averageRate": 1.55,
+    "totalReviewsCount": 691,
+    "id": "eb97b10a-317c-4d85-b396-7380e3fe99a2"
+  },
+  {
+    "name": "Yundt and Sons",
+    "latitude": 38.384246,
+    "longitude": 27.16856,
+    "averageRate": 3.71,
+    "totalReviewsCount": 760,
+    "id": "4792b11a-ee5c-4d85-986c-4cbeb4f0e194"
+  },
+  {
+    "name": "Hermiston Group",
+    "latitude": 38.389696,
+    "longitude": 27.156565,
+    "averageRate": 4.02,
+    "totalReviewsCount": 647,
+    "id": "1b364fc4-cf66-4713-8d58-ff8898160c30"
+  },
+  {
+    "name": "Effertz and Sons",
+    "latitude": 38.402881,
+    "longitude": 27.135518,
+    "averageRate": 1.51,
+    "totalReviewsCount": 810,
+    "id": "64cb3a1a-d37d-431d-a66b-00a044491b6f"
+  },
+  {
+    "name": "Murazik, Mosciski and Lang",
+    "latitude": 38.378401,
+    "longitude": 27.206706,
+    "averageRate": 1.09,
+    "totalReviewsCount": 734,
+    "id": "f817be6d-e3b7-4ef5-ae7d-9125c55bc3db"
+  },
+  {
+    "name": "Bauch Inc",
+    "latitude": 38.438047,
+    "longitude": 27.139567,
+    "averageRate": 2.35,
+    "totalReviewsCount": 690,
+    "id": "a637bea2-91a1-42e7-9219-3e19fa236847"
+  },
+  {
+    "name": "Beahan, Volkman and Casper",
+    "latitude": 38.385302,
+    "longitude": 27.183278,
+    "averageRate": 1.95,
+    "totalReviewsCount": 369,
+    "id": "f92c5c22-46c6-4fa5-be01-b094e03b90ec"
+  },
+  {
+    "name": "Murray, Schaden and Grady",
+    "latitude": 38.425068,
+    "longitude": 27.138722,
+    "averageRate": 2.96,
+    "totalReviewsCount": 970,
+    "id": "7945fdf6-4aa5-4150-90c9-c956e8be4fb6"
+  },
+  {
+    "name": "Haag-Waters",
+    "latitude": 38.425765,
+    "longitude": 27.133447,
+    "averageRate": 1.16,
+    "totalReviewsCount": 418,
+    "id": "50107c0f-2dae-4d35-8b1f-7f1db78018d4"
+  },
+  {
+    "name": "Von-Price",
+    "latitude": 38.43289,
+    "longitude": 27.167422,
+    "averageRate": 1.55,
+    "totalReviewsCount": 1087,
+    "id": "277aaa99-2db0-4fb3-8e13-f5c14deee256"
+  },
+  {
+    "name": "Cruickshank-Leffler",
+    "latitude": 38.402419,
+    "longitude": 27.1467,
+    "averageRate": 1.01,
+    "totalReviewsCount": 891,
+    "id": "58d1cdfe-7426-411d-aff5-640bdaaa9c1c"
+  },
+  {
+    "name": "Kovacek and Sons",
+    "latitude": 38.416406,
+    "longitude": 27.199202,
+    "averageRate": 1.63,
+    "totalReviewsCount": 528,
+    "id": "a6a278b8-826c-45c3-9ae4-b08121126fed"
+  },
+  {
+    "name": "Luettgen and Sons",
+    "latitude": 38.422423,
+    "longitude": 27.160296,
+    "averageRate": 4.62,
+    "totalReviewsCount": 561,
+    "id": "77dcbe31-1d5e-4a68-8997-3e5fce3502d5"
+  },
+  {
+    "name": "Batz-Wolff",
+    "latitude": 38.382558,
+    "longitude": 27.18177,
+    "averageRate": 3.07,
+    "totalReviewsCount": 837,
+    "id": "af37c88f-0358-4448-b6d8-0bfd6ce30cf5"
+  },
+  {
+    "name": "Gleason and Sons",
+    "latitude": 38.425322,
+    "longitude": 27.201841,
+    "averageRate": 4.18,
+    "totalReviewsCount": 990,
+    "id": "c77939af-96b5-4e7d-a1d1-fd0988f1f2bd"
+  },
+  {
+    "name": "Batz-Rodriguez",
+    "latitude": 38.390455,
+    "longitude": 27.187228,
+    "averageRate": 2.13,
+    "totalReviewsCount": 1237,
+    "id": "1f878462-72e6-45f7-aaa6-44f7a65e693c"
+  },
+  {
+    "name": "Shields and Sons",
+    "latitude": 38.384369,
+    "longitude": 27.187832,
+    "averageRate": 4.04,
+    "totalReviewsCount": 653,
+    "id": "1176e0a6-785b-4bbe-a740-46907b1e6267"
+  },
+  {
+    "name": "Hermiston-Kessler",
+    "latitude": 38.381452,
+    "longitude": 27.21499,
+    "averageRate": 3.45,
+    "totalReviewsCount": 992,
+    "id": "bef69d58-5f55-46ce-91d1-f546520aa456"
+  },
+  {
+    "name": "Howe Group",
+    "latitude": 38.40838,
+    "longitude": 27.190112,
+    "averageRate": 4.94,
+    "totalReviewsCount": 1124,
+    "id": "cc936346-aa16-4167-a9d3-f55bccb52ca1"
+  },
+  {
+    "name": "MacGyver Inc",
+    "latitude": 38.419435,
+    "longitude": 27.151529,
+    "averageRate": 1.79,
+    "totalReviewsCount": 1220,
+    "id": "27b54d6b-b02d-4ca0-8c92-5d68081b7d6b"
+  },
+  {
+    "name": "Larson and Sons",
+    "latitude": 38.430639,
+    "longitude": 27.189018,
+    "averageRate": 2.07,
+    "totalReviewsCount": 536,
+    "id": "cbe0e4f0-2997-489d-aa0e-6d13733d47a0"
+  },
+  {
+    "name": "Wiza-Conroy",
+    "latitude": 38.397857,
+    "longitude": 27.204855,
+    "averageRate": 1.98,
+    "totalReviewsCount": 677,
+    "id": "6ac6bc5e-4155-4ecd-bad2-4e745cd1fd0c"
+  },
+  {
+    "name": "Feest, Labadie and Schuppe",
+    "latitude": 38.389384,
+    "longitude": 27.171403,
+    "averageRate": 4.13,
+    "totalReviewsCount": 819,
+    "id": "48d8f3f2-8836-46c4-bcc1-20fdc3b4ec17"
+  },
+  {
+    "name": "Schroeder-Cronin",
+    "latitude": 38.409832,
+    "longitude": 27.21229,
+    "averageRate": 3.22,
+    "totalReviewsCount": 481,
+    "id": "eed6167c-11e5-4c79-8116-6798ba34e3dc"
+  },
+  {
+    "name": "Lang, Bergnaum and Kozey",
+    "latitude": 38.389731,
+    "longitude": 27.174697,
+    "averageRate": 3.84,
+    "totalReviewsCount": 704,
+    "id": "3f6f54ce-47c7-4a6e-9644-7bb6105701e5"
+  },
+  {
+    "name": "Donnelly Group",
+    "latitude": 38.393624,
+    "longitude": 27.149628,
+    "averageRate": 2.1,
+    "totalReviewsCount": 1153,
+    "id": "61f29a2d-6c98-46f9-898f-444523b00902"
+  },
+  {
+    "name": "Emard and Sons",
+    "latitude": 38.425392,
+    "longitude": 27.168745,
+    "averageRate": 4.02,
+    "totalReviewsCount": 451,
+    "id": "e734b958-54ac-4325-9fa1-9389abf616fb"
+  },
+  {
+    "name": "Ruecker and Sons",
+    "latitude": 38.387456,
+    "longitude": 27.140862,
+    "averageRate": 4.63,
+    "totalReviewsCount": 332,
+    "id": "66e30e79-58dc-44ba-84fb-4e6ebfe5a44d"
+  },
+  {
+    "name": "Sawayn, Zulauf and Sanford",
+    "latitude": 38.414248,
+    "longitude": 27.13986,
+    "averageRate": 2.7,
+    "totalReviewsCount": 415,
+    "id": "40bcf801-b66e-4778-a92d-0e7e4c7122af"
+  },
+  {
+    "name": "Gibson, Feeney and Cronin",
+    "latitude": 38.411022,
+    "longitude": 27.167063,
+    "averageRate": 2.09,
+    "totalReviewsCount": 1240,
+    "id": "4777fce3-17a9-4a11-9cab-3f59ff185dee"
+  },
+  {
+    "name": "Johnson Inc",
+    "latitude": 38.395423,
+    "longitude": 27.130853,
+    "averageRate": 4.25,
+    "totalReviewsCount": 1094,
+    "id": "31c95d69-2610-4ce4-bc17-b60f545d98da"
+  },
+  {
+    "name": "Corwin and Sons",
+    "latitude": 38.38478,
+    "longitude": 27.157539,
+    "averageRate": 2.83,
+    "totalReviewsCount": 334,
+    "id": "a67189f1-a3f9-4919-9cf1-6e84bc7aa609"
+  },
+  {
+    "name": "Feil-Trantow",
+    "latitude": 38.384077,
+    "longitude": 27.15737,
+    "averageRate": 3.2,
+    "totalReviewsCount": 837,
+    "id": "d376c7be-b97f-4ce6-a160-afcc766bd048"
+  },
+  {
+    "name": "Kertzmann-Robel",
+    "latitude": 38.436668,
+    "longitude": 27.141281,
+    "averageRate": 2.93,
+    "totalReviewsCount": 504,
+    "id": "f6d42aed-0707-4287-a8c0-66101218d60e"
+  },
+  {
+    "name": "Barton Group",
+    "latitude": 38.392025,
+    "longitude": 27.134415,
+    "averageRate": 3.0,
+    "totalReviewsCount": 880,
+    "id": "376fdb93-2cd7-4f4e-baa7-fcda28cf9ba2"
+  },
+  {
+    "name": "Romaguera, Zulauf and Emard",
+    "latitude": 38.388705,
+    "longitude": 27.193916,
+    "averageRate": 2.52,
+    "totalReviewsCount": 411,
+    "id": "07405e59-9bd0-4b18-8778-9a7b97d41b3d"
+  },
+  {
+    "name": "Zemlak-Cormier",
+    "latitude": 38.416877,
+    "longitude": 27.126821,
+    "averageRate": 4.62,
+    "totalReviewsCount": 1041,
+    "id": "8a66a74a-4bbf-464e-80b5-f56de2d1ca05"
+  },
+  {
+    "name": "O'Conner-Marks",
+    "latitude": 38.382645,
+    "longitude": 27.184772,
+    "averageRate": 4.39,
+    "totalReviewsCount": 1238,
+    "id": "0f6354b6-0065-446f-8580-b24a081942de"
+  },
+  {
+    "name": "Marvin-Kreiger",
+    "latitude": 38.405424,
+    "longitude": 27.171828,
+    "averageRate": 4.13,
+    "totalReviewsCount": 455,
+    "id": "81bddaad-5053-4e4b-848b-d6751f5b7b72"
+  },
+  {
+    "name": "Haag, Powlowski and Wunsch",
+    "latitude": 38.386948,
+    "longitude": 27.191889,
+    "averageRate": 1.05,
+    "totalReviewsCount": 1165,
+    "id": "81a4f64c-991d-44b9-af2d-8c4ad6bfd621"
+  },
+  {
+    "name": "Rice, Anderson and Nienow",
+    "latitude": 38.381179,
+    "longitude": 27.145678,
+    "averageRate": 1.85,
+    "totalReviewsCount": 408,
+    "id": "2be023ee-774e-46e5-9bc3-1880897605bd"
+  },
+  {
+    "name": "Ryan, Altenwerth and Hauck",
+    "latitude": 38.389354,
+    "longitude": 27.211511,
+    "averageRate": 1.6,
+    "totalReviewsCount": 941,
+    "id": "039ea886-213f-4c6e-90a4-43a0805d7205"
+  },
+  {
+    "name": "Beer, Hagenes and Murray",
+    "latitude": 38.430508,
+    "longitude": 27.189931,
+    "averageRate": 4.75,
+    "totalReviewsCount": 762,
+    "id": "c97e9325-4186-4b38-8aec-39f3365db89e"
+  },
+  {
+    "name": "Hintz-Bauch",
+    "latitude": 38.408457,
+    "longitude": 27.144947,
+    "averageRate": 4.11,
+    "totalReviewsCount": 534,
+    "id": "fb75de3e-ba36-49af-ac16-7f3e1bd3c72e"
+  },
+  {
+    "name": "Franecki, Koepp and Will",
+    "latitude": 38.383802,
+    "longitude": 27.132616,
+    "averageRate": 1.09,
+    "totalReviewsCount": 982,
+    "id": "4a608bb9-b5e2-447a-86c9-8196efd26805"
+  },
+  {
+    "name": "Huels, Daugherty and Hermiston",
+    "latitude": 38.40162,
+    "longitude": 27.134451,
+    "averageRate": 2.31,
+    "totalReviewsCount": 354,
+    "id": "4b02767d-5ca7-401d-b8ef-f16f74ec726f"
+  },
+  {
+    "name": "Padberg, Legros and O'Reilly",
+    "latitude": 38.381856,
+    "longitude": 27.135549,
+    "averageRate": 4.83,
+    "totalReviewsCount": 566,
+    "id": "9091fb7d-25a2-4524-aed7-499a5023444a"
+  },
+  {
+    "name": "Hilpert LLC",
+    "latitude": 38.420848,
+    "longitude": 27.152722,
+    "averageRate": 1.76,
+    "totalReviewsCount": 1118,
+    "id": "d6b04bcf-e388-479d-b04c-1f6d91876247"
+  },
+  {
+    "name": "Becker-Trantow",
+    "latitude": 38.387546,
+    "longitude": 27.182384,
+    "averageRate": 3.94,
+    "totalReviewsCount": 978,
+    "id": "39eb6081-0350-421a-abcc-ca49bf253568"
+  }
+]

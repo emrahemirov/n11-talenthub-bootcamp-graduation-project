@@ -12,8 +12,11 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 @EnableFeignClients
 public class RestaurantServiceApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(RestaurantServiceApplication.class, args);
+
     }
+
 
 }

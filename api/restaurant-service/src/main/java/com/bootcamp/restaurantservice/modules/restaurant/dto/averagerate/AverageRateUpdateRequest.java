@@ -9,6 +9,6 @@ public record AverageRateUpdateRequest(
         @NotEmpty
         String restaurantId,
         
-        ReviewRate oldRate,
-        ReviewRate newRate) {
+        Double oldRate,
+        Double newRate) {
 }

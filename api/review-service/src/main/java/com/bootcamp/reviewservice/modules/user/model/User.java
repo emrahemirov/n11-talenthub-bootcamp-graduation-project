@@ -19,6 +19,9 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username", length = 50, nullable = false, unique = true)
+    private String username;
+
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
@@ -30,6 +33,7 @@ public class User extends BaseEntity {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 '}';

@@ -49,6 +49,7 @@ public class UserAddress extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private UserAddressType addressType;
 
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

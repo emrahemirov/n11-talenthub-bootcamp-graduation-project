@@ -1,13 +1,15 @@
 package com.bootcamp.reviewservice.modules.review.dto;
 
-import com.bootcamp.reviewservice.modules.review.model.ReviewRate;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 public record ReviewUpdateRequest(
         @NotNull
         Long id,
         String comment,
-        @NotNull
-        ReviewRate rate
+        @Min(1)
+        @Max(5)
+        Double rate
 ) {
 }

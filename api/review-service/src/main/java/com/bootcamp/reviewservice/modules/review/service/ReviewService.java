@@ -9,7 +9,6 @@ import com.bootcamp.reviewservice.modules.review.dto.ReviewSaveRequest;
 import com.bootcamp.reviewservice.modules.review.dto.ReviewUpdateRequest;
 import com.bootcamp.reviewservice.modules.review.dto.averagerate.AverageRateUpdateRequest;
 import com.bootcamp.reviewservice.modules.review.model.Review;
-import com.bootcamp.reviewservice.modules.review.model.ReviewRate;
 import com.bootcamp.reviewservice.modules.review.repository.ReviewRepository;
 import com.bootcamp.reviewservice.modules.user.model.User;
 import com.bootcamp.reviewservice.modules.user.service.UserService;
@@ -73,8 +72,8 @@ public class ReviewService {
 
     public ReviewResponse update(ReviewUpdateRequest updateRequest) {
         Review review = findReviewById(updateRequest.id());
-        ReviewRate oldRate = review.getRate();
-        ReviewRate newRate = updateRequest.rate();
+        Double oldRate = review.getRate();
+        Double newRate = updateRequest.rate();
 
         client.updateAverageReview(
                 review.getRestaurantId(),

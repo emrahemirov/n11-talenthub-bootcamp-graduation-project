@@ -23,4 +23,5 @@ public interface ReviewMapper {
 
     void mutateReview(@MappingTarget Review entity, ReviewUpdateRequest dto);
 
+    List<Review> toReviewList(List<ReviewSaveRequest> requestList);
 }

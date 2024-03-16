@@ -23,4 +23,5 @@ public interface UserAddressMapper {
     UserAddress toUserAddress(UserAddressUpdateRequest dto);
 
     void mutateUserAddress(@MappingTarget UserAddress entity, UserAddressUpdateRequest dto);
+
 }

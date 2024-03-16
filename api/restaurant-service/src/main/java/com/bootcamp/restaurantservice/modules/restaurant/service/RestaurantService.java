@@ -9,7 +9,6 @@ import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantResponse;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantSaveRequest;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.RestaurantUpdateRequest;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.averagerate.AverageRateUpdateRequest;
-import com.bootcamp.restaurantservice.modules.restaurant.dto.averagerate.ReviewRate;
 import com.bootcamp.restaurantservice.modules.restaurant.dto.useraddress.UserAddressResponse;
 import com.bootcamp.restaurantservice.modules.restaurant.model.Restaurant;
 import com.bootcamp.restaurantservice.modules.restaurant.repository.RestaurantRepository;
@@ -64,8 +63,8 @@ public class RestaurantService {
 
     public void updateAverageRate(AverageRateUpdateRequest updateRequest) {
         Restaurant restaurant = findRestaurantById(updateRequest.restaurantId());
-        ReviewRate newRate = updateRequest.newRate();
-        ReviewRate oldRate = updateRequest.oldRate();
+        Double newRate = updateRequest.newRate();
+        Double oldRate = updateRequest.oldRate();
 
         // newRate == null -> delete
         // oldRate == null -> add
@@ -79,12 +78,12 @@ public class RestaurantService {
 
         if (oldRate == null) {
             newTotalReviewsCount = currentTotalReviewsCount + 1;
-            newAverageRate = (currentAverageRate * currentTotalReviewsCount + newRate.getValue()) / newTotalReviewsCount;
+            newAverageRate = (currentAverageRate * currentTotalReviewsCount + newRate) / newTotalReviewsCount;
         } else if (newRate == null) {
             newTotalReviewsCount = currentTotalReviewsCount - 1;
-            newAverageRate = (currentAverageRate * currentTotalReviewsCount + oldRate.getValue()) / newTotalReviewsCount;
+            newAverageRate = (currentAverageRate * currentTotalReviewsCount + oldRate) / newTotalReviewsCount;
         } else {
-            double updateRate = oldRate.getValue() - newRate.getValue();
+            double updateRate = oldRate - newRate;
             newAverageRate = (currentAverageRate * currentTotalReviewsCount + updateRate) / newTotalReviewsCount;
         }
 

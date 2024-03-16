@@ -24,12 +24,10 @@ public class Review extends BaseEntity {
     private String restaurantId;
 
     @Column(name = "rate", nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private ReviewRate rate;
+    private Double rate;
 
     @Column(name = "comment")
     private String comment;
-
 
     @Transient
     private Long userId;

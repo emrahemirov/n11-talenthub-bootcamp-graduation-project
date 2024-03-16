@@ -1,13 +1,17 @@
 package com.bootcamp.reviewservice.modules.user.dto;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public record UserSaveRequest(
-        @NotNull
+        @NotBlank
+        @Size(max = 50)
+        String username,
+
+        @NotBlank
         @Size(max = 50)
         String name,
-        @NotNull
+        @NotBlank
         @Size(max = 50)
         String surname
 ) {
