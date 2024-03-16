@@ -1038,11 +1038,9 @@
      </similarity>
     -->
 
-
     <field name="geo" type="location" indexed="true" stored="true" multiValued="false"/>
     <field name="name" type="string" indexed="true" stored="true" multiValued="false"/>
+    <field name="imageSrc" type="string" indexed="false" stored="true" multiValued="false"/>
     <field name="averageRate" type="pdouble" indexed="true" stored="true" multiValued="false"/>
     <field name="totalReviewsCount" type="plong" indexed="true" stored="true" multiValued="false"/>
-
-
 </schema>
