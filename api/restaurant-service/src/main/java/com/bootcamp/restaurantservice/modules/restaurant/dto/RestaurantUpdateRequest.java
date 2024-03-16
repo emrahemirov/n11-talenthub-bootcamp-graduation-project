@@ -1,14 +1,16 @@
 package com.bootcamp.restaurantservice.modules.restaurant.dto;
 
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 public record RestaurantUpdateRequest(
-        @NotNull
-        @NotEmpty
+        @NotBlank
         String id,
+        @NotBlank
+        String name,
+        @NotBlank
         String latitude,
+        @NotBlank
         String longitude
 ) {
 
