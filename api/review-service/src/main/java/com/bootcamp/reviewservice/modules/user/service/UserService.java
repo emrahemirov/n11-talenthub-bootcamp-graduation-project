@@ -35,6 +35,11 @@ public class UserService {
         return WithPagination.of(userPage, userResponseList);
     }
 
+    public UserResponse findById(Long id) {
+        User user = findUserById(id);
+        return UserMapper.INSTANCE.toUserResponse(user);
+    }
+
     public void delete(Long id) {
         User user = findUserById(id);
         repository.delete(user);

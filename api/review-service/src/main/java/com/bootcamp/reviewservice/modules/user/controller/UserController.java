@@ -28,9 +28,15 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<RestResponse<WithPagination<UserResponse>>> getAll(QueryParams queryParams) {
+    public ResponseEntity<RestResponse<WithPagination<UserResponse>>> findAll(QueryParams queryParams) {
         WithPagination<UserResponse> userResponseWithPagination = service.findAll(queryParams);
         return new ResponseEntity<>(RestResponse.of(userResponseWithPagination), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RestResponse<UserResponse>> findById(@PathVariable Long id) {
+        UserResponse userResponse = service.findById(id);
+        return new ResponseEntity<>(RestResponse.of(userResponse), HttpStatus.OK);
     }
 
 

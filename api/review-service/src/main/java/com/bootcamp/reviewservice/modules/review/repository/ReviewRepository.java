@@ -1,8 +1,12 @@
 package com.bootcamp.reviewservice.modules.review.repository;
 
 import com.bootcamp.reviewservice.modules.review.model.Review;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
+
+    Page<Review> findAllByRestaurantId(String restaurantId, Pageable pageable);
 }

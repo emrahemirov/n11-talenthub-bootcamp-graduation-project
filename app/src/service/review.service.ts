@@ -4,8 +4,10 @@ import { RestRequest } from '@/model/rest-request.model';
 import { WithPagination } from '@/model/with-pagination.model';
 import { baseAxios } from '@/util/baseAxios';
 
-export type FindAllReviewsRequest = RestRequest<QueryParams>;
-export type FindReviewByIdRequest = RestRequest<null, { id: number }>;
+export type FindReviewsByRestaurantIdRequest = RestRequest<
+  QueryParams,
+  { restaurantId: string }
+>;
 export type UpdateReviewRequest = RestRequest<
   null,
   null,
@@ -26,22 +28,14 @@ export type CreateReviewRequest = RestRequest<
 >;
 export type DeleteReviewRequest = RestRequest<null, { id: number }>;
 
-export const findAllReviews = async ({
+export const findReviewsByRestaurantId = async ({
   requestParams,
-}: FindAllReviewsRequest) => {
+  pathVariables,
+}: FindReviewsByRestaurantIdRequest) => {
   return baseAxios<WithPagination<Review>>({
     method: 'GET',
-    url: '/reviews',
+    url: `/reviews/by-restaurant-id/${pathVariables?.restaurantId}`,
     params: requestParams,
-  });
-};
-
-export const findReviewById = async ({
-  pathVariables,
-}: FindReviewByIdRequest) => {
-  return baseAxios<Review>({
-    method: 'GET',
-    url: `/reviews/${pathVariables.id}`,
   });
 };
 
@@ -56,7 +50,7 @@ export const createReview = async ({ body }: CreateReviewRequest) => {
 export const updateReview = async ({ body }: UpdateReviewRequest) => {
   return baseAxios<Review>({
     method: 'PUT',
-    url: `/reviews/${body.id}`,
+    url: `/reviews/${body?.id}`,
     data: body,
   });
 };
@@ -64,6 +58,6 @@ export const updateReview = async ({ body }: UpdateReviewRequest) => {
 export const deleteReview = async ({ pathVariables }: DeleteReviewRequest) => {
   return baseAxios({
     method: 'DELETE',
-    url: `/reviews/${pathVariables.id}`,
+    url: `/reviews/${pathVariables?.id}`,
   });
 };

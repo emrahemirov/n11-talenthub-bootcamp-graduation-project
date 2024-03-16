@@ -26,9 +26,9 @@ public class ReviewController {
         return new ResponseEntity<>(RestResponse.of(reviewResponse), HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<RestResponse<WithPagination<ReviewResponse>>> findAll(QueryParams queryParams) {
-        WithPagination<ReviewResponse> responseWithPagination = service.findAll(queryParams);
+    @GetMapping("/by-restaurant-id/{restaurantId}")
+    public ResponseEntity<RestResponse<WithPagination<ReviewResponse>>> findAllByRestaurantId(QueryParams queryParams, @PathVariable String restaurantId) {
+        WithPagination<ReviewResponse> responseWithPagination = service.findAllByRestaurantId(restaurantId, queryParams);
         return new ResponseEntity<>(RestResponse.of(responseWithPagination), HttpStatus.OK);
     }
 

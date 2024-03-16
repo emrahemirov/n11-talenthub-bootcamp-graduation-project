@@ -1,8 +1,6 @@
 version: '3'
 name: bootcamp_n11
 services:
-
-
   rabbitmq:
     container_name: bootcamp_rabbitmq
     image: rabbitmq:3.10.5-management
