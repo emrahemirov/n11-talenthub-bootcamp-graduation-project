@@ -42,7 +42,7 @@ export const findAllRestaurants = async ({
 export const findRecommendedRestaurants = async ({
   requestParams,
 }: FindRecommendedRestaurantsRequest) => {
-  return baseAxios<Restaurant>({
+  return baseAxios<Restaurant[]>({
     method: 'GET',
     url: '/restaurants/recommended',
     params: requestParams,

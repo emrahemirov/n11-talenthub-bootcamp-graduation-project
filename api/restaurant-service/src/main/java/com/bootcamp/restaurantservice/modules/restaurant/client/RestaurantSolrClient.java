@@ -46,6 +46,7 @@ public class RestaurantSolrClient {
                 restaurant.setId(result.get("id").toString());
                 restaurant.setName(result.get("name").toString());
                 restaurant.setGeo(result.get("geo").toString());
+                restaurant.setImageSrc(result.get("imageSrc").toString());
                 restaurant.setAverageRate((Double) result.get("averageRate"));
                 restaurant.setTotalReviewsCount((Long) result.get("totalReviewsCount"));
 

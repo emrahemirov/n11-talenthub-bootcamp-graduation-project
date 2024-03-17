@@ -80,7 +80,7 @@ public class MockGenerator implements ApplicationRunner {
                         .findFirst().orElseThrow(() -> new RuntimeException());
 
                 entity.setUser(user);
-                entity.setRestaurantId("ad8ffdab-af63-4141-8d99-1583d12a0a7c");
+                entity.setRestaurantId("e119fcd7-631b-4631-a0e3-7e3d7ff832d4");
             });
             reviewRepository.saveAll(entities);
 
