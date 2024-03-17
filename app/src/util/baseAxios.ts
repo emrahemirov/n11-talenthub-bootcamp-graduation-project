@@ -1,15 +1,15 @@
-import { RestResponseWithData } from '@/model/rest-response.model';
-import axios, { AxiosRequestConfig } from 'axios';
+import {RestResponseWithData} from '@/model/rest-response.model';
+import axios, {AxiosRequestConfig} from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:9191/api',
+    baseURL: 'http://localhost:9191/api/v1',
 });
 
 instance.interceptors.response.use(
-  (response) => response.data,
-  async (error) => {
-    return Promise.reject(error.response?.data?.error);
-  },
+    (response) => response.data,
+    async (error) => {
+        return Promise.reject(error.response?.data?.error);
+    },
 );
 
 /**
@@ -25,4 +25,4 @@ instance.interceptors.response.use(
  *      .catch((err) => {});
  * }; */
 export const baseAxios = <D>(cfg: AxiosRequestConfig) =>
-  instance.request<unknown, RestResponseWithData<D>>(cfg);
+    instance.request<unknown, RestResponseWithData<D>>(cfg);
