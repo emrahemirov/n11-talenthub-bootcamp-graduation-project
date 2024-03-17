@@ -1,14 +1,17 @@
 import { PropsWithChildren } from 'react';
 import Header from './Header/Header';
+import { Container, Stack } from '@chakra-ui/react';
 
 type BaseLayoutProps = PropsWithChildren;
 
 const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
-    <div className='flex gap-4 flex-col'>
+    <Stack spacing={4}>
       <Header />
-      <main>{children}</main>
-    </div>
+      <Container as={'main'} maxW={'6xl'}>
+        {children}
+      </Container>
+    </Stack>
   );
 };
 

@@ -1,6 +1,5 @@
 import {
   DeleteUserRequest,
-  FindUserByIdRequest,
   UpdateUserRequest,
   deleteUser,
   findUserById,
@@ -11,15 +10,12 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const USER_QUERY_KEYS = {
   user: ['USER'],
-  userById({ id }: { id?: number }) {
-    return ['USER', id];
-  },
 };
 
-export const useFinUerByIdQuery = ({ pathVariables }: FindUserByIdRequest) => {
+export const useFindUserByIdQuery = () => {
   return useQuery({
-    queryFn: () => findUserById({ pathVariables }),
-    queryKey: USER_QUERY_KEYS.userById({ id: pathVariables?.id }),
+    queryFn: () => findUserById({ pathVariables: { id: 4 } }),
+    queryKey: USER_QUERY_KEYS.user,
   });
 };
 
@@ -36,7 +32,7 @@ export const useUpdateRestaurantMutation = ({ body }: UpdateUserRequest) => {
     mutationFn: () => updateUser({ body }),
     onSettled() {
       queryClient.invalidateQueries({
-        queryKey: USER_QUERY_KEYS.userById({ id: body?.id }),
+        queryKey: USER_QUERY_KEYS.user,
       });
     },
   });
@@ -49,7 +45,7 @@ export const useDeleteUserMutation = ({ pathVariables }: DeleteUserRequest) => {
     mutationFn: () => deleteUser({ pathVariables }),
     onSettled() {
       queryClient.invalidateQueries({
-        queryKey: USER_QUERY_KEYS.userById({ id: pathVariables?.id }),
+        queryKey: USER_QUERY_KEYS.user,
       });
     },
   });

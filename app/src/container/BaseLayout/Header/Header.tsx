@@ -1,27 +1,37 @@
 import {
+  Container,
+  Flex,
+  Image,
   Popover,
-  PopoverContent,
   PopoverTrigger,
-} from '@radix-ui/react-popover';
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { FaRegUserCircle } from 'react-icons/fa';
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverArrow,
+  PopoverCloseButton,
+  Avatar,
+} from '@chakra-ui/react';
 
 const Header = () => {
   return (
-    <header className='flex justify-between items-center p-4 w-full max-w-screen-xl mx-auto'>
-      <img src='/talenthub_logo.png' width={314} height={35} />
-      <Popover>
-        <PopoverTrigger>
-          <Avatar>
-            <AvatarImage />
-            <AvatarFallback>
-              <FaRegUserCircle size={24} />
-            </AvatarFallback>
-          </Avatar>
-        </PopoverTrigger>
-        <PopoverContent className='p-2'></PopoverContent>
-      </Popover>
-    </header>
+    <Container py={4} maxW={'6xl'} as={'header'}>
+      <Flex justify={'space-between'} align={'center'}>
+        <Image src='/talenthub_logo.png' width={314} height={35} />
+        <Popover>
+          <PopoverTrigger>
+            <Avatar size={'sm'} />
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverHeader>Confirmation!</PopoverHeader>
+            <PopoverBody>
+              Are you sure you want to have that milkshake?
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+      </Flex>
+    </Container>
   );
 };
 

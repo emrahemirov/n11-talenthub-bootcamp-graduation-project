@@ -93,7 +93,7 @@ public class MockGenerator implements ApplicationRunner {
         try {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("https://api.mockaroo.com/api/6c2c0530?count=100&key=15ff0280")
+                    .url("https://api.mockaroo.com/api/6c2c0530?count=1000&key=15ff0280")
                     .build();
             Response response = client.newCall(request).execute();
             String jsonData = response.body().string();

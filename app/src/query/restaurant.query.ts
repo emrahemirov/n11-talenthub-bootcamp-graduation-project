@@ -2,7 +2,6 @@ import {
   findAllRestaurants,
   findRecommendedRestaurants,
 } from '@/service/restaurant.service';
-import { useAuthStore } from '@/store/auth.store';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 export const RESTAURANT_QUERY_KEYS = {
@@ -22,11 +21,8 @@ export const useFindAllRestaurantsInfiniteQuery = () => {
 };
 
 export const useFindRecommendedRestaurantsQuery = () => {
-  const { user } = useAuthStore();
-
   return useQuery({
     queryKey: RESTAURANT_QUERY_KEYS.recommendedRestaurants,
-    queryFn: () =>
-      findRecommendedRestaurants({ requestParams: { userId: user?.id } }),
+    queryFn: () => findRecommendedRestaurants({ requestParams: { userId: 1 } }),
   });
 };

@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import HomeContainer from './container/HomeContainer';
 import BaseLayout from './container/BaseLayout';
+import { ChakraProvider } from '@chakra-ui/react';
+import { theme } from './styles/theme';
 
 const WrappedApp = () => {
   return (
@@ -17,7 +19,9 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <WrappedApp />
+      <ChakraProvider theme={theme}>
+        <WrappedApp />
+      </ChakraProvider>
     </QueryClientProvider>
   );
 };

@@ -1,16 +1,12 @@
-// import { useFindRecommendedRestaurantsQuery } from '@/query/restaurant.query';
-// import { useUserStore } from '@/store/user.store';
-// import { useEffect } from 'react';
+import { Stack } from '@chakra-ui/react';
+import InfiniteRestaurantList from './Restaurants/InfiniteRestaurantList';
 
 const HomeContainer = () => {
-  // const { getUser } = useUserStore();
-
-  // useEffect(() => {
-  //   getUser({ pathVariables: { id: 1 } });
-  // }, [getUser]);
-
-  // const { data } = useFindRecommendedRestaurantsQuery();
-  return <div>HomeContainer</div>;
+  return (
+    <Stack spacing={4}>
+      <InfiniteRestaurantList />
+    </Stack>
+  );
 };
 
 export default HomeContainer;
