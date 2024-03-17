@@ -4,7 +4,7 @@ import { RestRequest } from '@/model/rest-request.model';
 import { baseAxios } from '@/util/baseAxios';
 
 export type FindAllUsersRequest = RestRequest<QueryParams>;
-export type FindUserByIdRequest = RestRequest<null, { id: number }>;
+export type FindUserByIdRequest = RestRequest<null, Partial<{ id: number }>>;
 export type UpdateUserRequest = RestRequest<
   null,
   null,

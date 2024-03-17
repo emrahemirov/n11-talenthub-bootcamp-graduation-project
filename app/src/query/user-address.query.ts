@@ -1,5 +1,6 @@
 import {
   DeleteUserAddressRequest,
+  FindUserAddressesByUserIdRequest,
   UpdateUserAddressRequest,
   deleteUserAddress,
   findUserAddressesByUserId,
@@ -9,21 +10,20 @@ import {
   CreateUserAddressRequest,
   createUserAddress,
 } from '@/service/user-address.service';
-import { useAuthStore } from '@/store/auth.store';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const USER_ADDRESS_QUERY_KEYS = {
   userAddresses: ['USER_ADDRESSES'],
 } as const;
 
-export const useFindUserAddressesByUserIdQuery = () => {
-  const { user } = useAuthStore();
-
+export const useFindUserAddressesByUserIdQuery = ({
+  pathVariables,
+}: FindUserAddressesByUserIdRequest) => {
   return useQuery({
     queryKey: USER_ADDRESS_QUERY_KEYS.userAddresses,
     queryFn: () =>
       findUserAddressesByUserId({
-        pathVariables: { userId: user?.id },
+        pathVariables,
       }),
   });
 };

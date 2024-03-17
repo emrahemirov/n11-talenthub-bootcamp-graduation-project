@@ -1,42 +1,56 @@
 import {
   DeleteUserRequest,
+  FindUserByIdRequest,
   UpdateUserRequest,
   deleteUser,
+  findUserById,
   updateUser,
 } from '@/service/user.service';
 import { CreateUserRequest, createUser } from '@/service/user.service';
-import { useAuthStore } from '@/store/auth.store';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+
+export const USER_QUERY_KEYS = {
+  user: ['USER'],
+  userById({ id }: { id?: number }) {
+    return ['USER', id];
+  },
+};
+
+export const useFinUerByIdQuery = ({ pathVariables }: FindUserByIdRequest) => {
+  return useQuery({
+    queryFn: () => findUserById({ pathVariables }),
+    queryKey: USER_QUERY_KEYS.userById({ id: pathVariables?.id }),
+  });
+};
 
 export const useCreateUserMutation = ({ body }: CreateUserRequest) => {
-  const { updateUser } = useAuthStore();
-
   return useMutation({
     mutationFn: () => createUser({ body }),
-    onSettled(data) {
-      data?.data && updateUser({ user: data?.data });
-    },
   });
 };
 
 export const useUpdateRestaurantMutation = ({ body }: UpdateUserRequest) => {
-  const { updateUser: updateAuthUser } = useAuthStore();
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: () => updateUser({ body }),
-    onSettled(data) {
-      data?.data && updateAuthUser({ user: data?.data });
+    onSettled() {
+      queryClient.invalidateQueries({
+        queryKey: USER_QUERY_KEYS.userById({ id: body?.id }),
+      });
     },
   });
 };
 
 export const useDeleteUserMutation = ({ pathVariables }: DeleteUserRequest) => {
-  const { logout } = useAuthStore();
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: () => deleteUser({ pathVariables }),
     onSettled() {
-      logout();
+      queryClient.invalidateQueries({
+        queryKey: USER_QUERY_KEYS.userById({ id: pathVariables?.id }),
+      });
     },
   });
 };
