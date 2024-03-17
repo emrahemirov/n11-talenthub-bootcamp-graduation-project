@@ -14,7 +14,7 @@ export const USER_QUERY_KEYS = {
 
 export const useFindUserByIdQuery = () => {
   return useQuery({
-    queryFn: () => findUserById({ pathVariables: { id: 4 } }),
+    queryFn: () => findUserById({ pathVariables: { id: 1 } }),
     queryKey: USER_QUERY_KEYS.user,
   });
 };

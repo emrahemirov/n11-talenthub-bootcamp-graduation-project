@@ -8,6 +8,7 @@ import com.bootcamp.reviewservice.modules.review.repository.ReviewRepository;
 import com.bootcamp.reviewservice.modules.user.model.User;
 import com.bootcamp.reviewservice.modules.user.repository.UserRepository;
 import com.bootcamp.reviewservice.modules.useraddress.dto.UserAddressSaveRequest;
+import com.bootcamp.reviewservice.modules.useraddress.model.UserAddressType;
 import com.bootcamp.reviewservice.modules.useraddress.service.UserAddressService;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
@@ -29,71 +30,41 @@ public class MockGenerator implements ApplicationRunner {
     private final UserRepository userRepository;
     private final UserAddressService userAddressService;
     private final ReviewRepository reviewRepository;
-    private List<User> users;
+    private final List<User> users = List.of(
+            new User(1L, "emrahemirov", "Emrah", "Emirov"),
+            new User(2L, "dummy", "Dummy", "User"));
 
-
-    public void generateUsers() {
-
-        try {
-            OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .url("https://api.mockaroo.com/api/a8661310?count=100&key=15ff0280")
-                    .build();
-            Response response = client.newCall(request).execute();
-            String jsonData = response.body().string();
-            Gson gson = new Gson();
-            List<MockUser> mocks = Arrays.asList(gson.fromJson(jsonData, MockUser[].class));
-
-            List<User> entities = mocks.stream().map(mock -> {
-                        User entity = new User();
-                        entity.setUsername(mock.username());
-                        entity.setName(mock.name());
-                        entity.setSurname(mock.surname());
-
-                        return entity;
-                    })
-                    .toList();
-
-
-            users = entities;
-
-            userRepository.saveAll(entities);
-            System.out.println("MOCK USERS GENERATED");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public void generateUserAddresses() {
 
-        try {
-            OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .url("https://api.mockaroo.com/api/230c78a0?count=100&key=15ff0280")
-                    .build();
-            Response response = client.newCall(request).execute();
-            String jsonData = response.body().string();
-            Gson gson = new Gson();
-            List<UserAddressSaveRequest> mocks = Arrays.asList(gson.fromJson(jsonData, UserAddressSaveRequest[].class));
+
+        List<UserAddressSaveRequest> myAddresses = List.of(new UserAddressSaveRequest(
+                "ev_adresi",
+                "38.430690",
+                "27.149312",
+                "my_addressline",
+                "14",
+                "12",
+                "23",
+                UserAddressType.HOUSE,
+                1L));
 
 
-            mocks.forEach(userAddressService::save);
+        myAddresses.forEach(userAddressService::save);
 
 
-            System.out.println("MOCK USER_ADDRESSES GENERATED");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("MOCK USER_ADDRESSES GENERATED");
+
 
     }
+
 
     public void generateReviews() {
 
         try {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("https://api.mockaroo.com/api/6c2c0530?count=1000&key=15ff0280")
+                    .url("https://api.mockaroo.com/api/6c2c0530?count=10&key=bdb2a5e0")
                     .build();
             Response response = client.newCall(request).execute();
             String jsonData = response.body().string();
@@ -101,12 +72,15 @@ public class MockGenerator implements ApplicationRunner {
             List<ReviewSaveRequest> mocks = Arrays.asList(gson.fromJson(jsonData, ReviewSaveRequest[].class));
             List<Review> entities = ReviewMapper.INSTANCE.toReviewList(mocks);
 
+
             entities.forEach(entity -> {
+
                 User user = users.stream()
                         .filter(element -> element.getId().equals(entity.getUserId()))
                         .findFirst().orElseThrow(() -> new RuntimeException());
 
                 entity.setUser(user);
+                entity.setRestaurantId("ad8ffdab-af63-4141-8d99-1583d12a0a7c");
             });
             reviewRepository.saveAll(entities);
 
@@ -119,7 +93,7 @@ public class MockGenerator implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        generateUsers();
+        userRepository.saveAll(users);
         generateUserAddresses();
         generateReviews();
     }

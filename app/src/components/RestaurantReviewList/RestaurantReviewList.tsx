@@ -26,6 +26,7 @@ const RestaurantReviewList = ({ restaurant }: RestaurantReviewListProps) => {
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
     useFindReviewsByRestaurantIdInfiniteQuery({
       pathVariables: { restaurantId: restaurant.id },
+      enabled: isOpen,
     });
 
   const observer = useRef<IntersectionObserver>();

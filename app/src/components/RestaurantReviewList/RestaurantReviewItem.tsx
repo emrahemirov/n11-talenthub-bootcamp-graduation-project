@@ -15,6 +15,7 @@ const RestaurantReviewItem = ({ review }: RestaurantReviewItemProps) => {
   return (
     <Card
       size={'sm'}
+      bgColor={isCurrentUser ? 'n11.50' : ''}
       border={isCurrentUser ? `1px solid ${colors.n11[500]}` : ''}
     >
       <CardBody>

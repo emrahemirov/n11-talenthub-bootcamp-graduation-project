@@ -21,8 +21,9 @@ export const REVIEW_QUERY_KEYS = {
 } as const;
 
 export const useFindReviewsByRestaurantIdInfiniteQuery = ({
+  enabled,
   pathVariables,
-}: FindReviewsByRestaurantIdRequest) => {
+}: FindReviewsByRestaurantIdRequest & { enabled: boolean }) => {
   return useInfiniteQuery({
     queryKey: REVIEW_QUERY_KEYS.restaurantsByReviewId({
       pathVariables,
@@ -35,6 +36,7 @@ export const useFindReviewsByRestaurantIdInfiniteQuery = ({
     initialPageParam: 0,
     getNextPageParam: (lastPage, pages) =>
       lastPage.data.hasNext ? pages.length : null,
+    enabled,
   });
 };
 
