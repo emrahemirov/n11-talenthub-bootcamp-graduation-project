@@ -10,4 +10,5 @@ export type UserAddress = {
   addressType: string;
   createdAt: string;
   updatedAt: string;
+  isPreferred: boolean;
 };

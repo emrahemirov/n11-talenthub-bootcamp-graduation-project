@@ -1,6 +1,5 @@
 import {
   DeleteUserAddressRequest,
-  FindUserAddressesByUserIdRequest,
   UpdateUserAddressRequest,
   deleteUserAddress,
   findUserAddressesByUserId,
@@ -11,19 +10,21 @@ import {
   createUserAddress,
 } from '@/service/user-address.service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useFindUserByIdQuery } from './user.query';
 
 export const USER_ADDRESS_QUERY_KEYS = {
   userAddresses: ['USER_ADDRESSES'],
 } as const;
 
-export const useFindUserAddressesByUserIdQuery = ({
-  pathVariables,
-}: FindUserAddressesByUserIdRequest) => {
+export const useFindUserAddressesByUserIdQuery = () => {
+  const query = useFindUserByIdQuery();
+  const user = query.data?.data;
+
   return useQuery({
     queryKey: USER_ADDRESS_QUERY_KEYS.userAddresses,
     queryFn: () =>
       findUserAddressesByUserId({
-        pathVariables,
+        pathVariables: { userId: user?.id },
       }),
   });
 };
@@ -43,13 +44,12 @@ export const useCreateUserAddressMutation = ({
   });
 };
 
-export const useUpdateUserAddressMutation = ({
-  body,
-}: UpdateUserAddressRequest) => {
+export const useUpdateUserAddressMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => updateUserAddress({ body }),
+    mutationFn: ({ body }: UpdateUserAddressRequest) =>
+      updateUserAddress({ body }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: USER_ADDRESS_QUERY_KEYS.userAddresses,
@@ -58,13 +58,12 @@ export const useUpdateUserAddressMutation = ({
   });
 };
 
-export const useDeleteUserAddressMutation = ({
-  pathVariables,
-}: DeleteUserAddressRequest) => {
+export const useDeleteUserAddressMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => deleteUserAddress({ pathVariables }),
+    mutationFn: ({ pathVariables }: DeleteUserAddressRequest) =>
+      deleteUserAddress({ pathVariables }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: USER_ADDRESS_QUERY_KEYS.userAddresses,

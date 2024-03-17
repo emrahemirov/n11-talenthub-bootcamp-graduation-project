@@ -61,7 +61,7 @@ const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
                   +lng,
                   userLocation?.lat,
                   userLocation?.lng,
-                ).toFixed(2)}
+                ).toFixed(2)}{' '}
                 km
               </Flex>
             ) : null}

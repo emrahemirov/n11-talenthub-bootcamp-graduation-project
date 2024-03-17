@@ -24,7 +24,7 @@ export type CreateUserRequest = RestRequest<
     surname: string;
   }
 >;
-export type DeleteUserRequest = RestRequest<null, { id: number }>;
+export type DeleteUserRequest = RestRequest<null, Partial<{ id: number }>>;
 
 export const findUserById = ({ pathVariables }: FindUserByIdRequest) => {
   return baseAxios<User>({
@@ -42,6 +42,7 @@ export const createUser = ({ body }: CreateUserRequest) => {
 };
 
 export const updateUser = ({ body }: UpdateUserRequest) => {
+  console.log('🚀 ~ body:', body);
   return baseAxios<User>({
     method: 'PUT',
     url: `/users/${body?.id}`,

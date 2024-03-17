@@ -5,7 +5,6 @@ import {
   findUserById,
   updateUser,
 } from '@/service/user.service';
-import { CreateUserRequest, createUser } from '@/service/user.service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const USER_QUERY_KEYS = {
@@ -19,17 +18,11 @@ export const useFindUserByIdQuery = () => {
   });
 };
 
-export const useCreateUserMutation = ({ body }: CreateUserRequest) => {
-  return useMutation({
-    mutationFn: () => createUser({ body }),
-  });
-};
-
-export const useUpdateRestaurantMutation = ({ body }: UpdateUserRequest) => {
+export const useUpdateUserMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => updateUser({ body }),
+    mutationFn: ({ body }: UpdateUserRequest) => updateUser({ body }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: USER_QUERY_KEYS.user,
@@ -38,11 +31,12 @@ export const useUpdateRestaurantMutation = ({ body }: UpdateUserRequest) => {
   });
 };
 
-export const useDeleteUserMutation = ({ pathVariables }: DeleteUserRequest) => {
+export const useDeleteUserMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => deleteUser({ pathVariables }),
+    mutationFn: ({ pathVariables }: DeleteUserRequest) =>
+      deleteUser({ pathVariables }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: USER_QUERY_KEYS.user,

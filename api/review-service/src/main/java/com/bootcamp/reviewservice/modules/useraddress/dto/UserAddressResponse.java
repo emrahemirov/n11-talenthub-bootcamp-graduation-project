@@ -13,6 +13,7 @@ public record UserAddressResponse(
         String buildingNumber,
         String floor,
         String apartmentNumber,
+        Boolean isPreferred,
         UserAddressType addressType,
         LocalDateTime createdAt,
         LocalDateTime updatedAt

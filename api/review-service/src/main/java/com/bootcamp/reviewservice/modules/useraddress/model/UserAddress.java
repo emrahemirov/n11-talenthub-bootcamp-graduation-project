@@ -21,7 +21,7 @@ public class UserAddress extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 100, nullable = false)
+    @Column(name = "name", length = 100)
     private String name;
 
     @Column(name = "latitude", length = 10)
@@ -30,10 +30,10 @@ public class UserAddress extends BaseEntity {
     @Column(name = "longitude", length = 10)
     private String longitude;
 
-    @Column(name = "address_line", nullable = false)
+    @Column(name = "address_line")
     private String addressLine;
 
-    @Column(name = "building_number", length = 10, nullable = false)
+    @Column(name = "building_number", length = 10)
     private String buildingNumber;
 
     @Column(name = "floor", length = 10)
@@ -51,7 +51,7 @@ public class UserAddress extends BaseEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Override

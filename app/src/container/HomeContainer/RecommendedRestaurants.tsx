@@ -9,7 +9,7 @@ const RecommendedRestaurants = () => {
 
   if (query.isLoading)
     return (
-      <Stack minH={'xs'}>
+      <Stack align={'center'} minH={'xs'}>
         <Spinner />
       </Stack>
     );

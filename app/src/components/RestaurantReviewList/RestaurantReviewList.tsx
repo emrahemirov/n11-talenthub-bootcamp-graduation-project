@@ -79,20 +79,20 @@ const RestaurantReviewList = ({ restaurant }: RestaurantReviewListProps) => {
           <ModalHeader>Yorumlar</ModalHeader>
           <ModalCloseButton />
           <ModalBody maxH={'md'} overflow={'auto'}>
-            {!reviews?.length ? (
-              <Text>Henüz yorum yok</Text>
-            ) : (
-              <Stack spacing={4}>
-                <AddReview restaurant={restaurant} />
-                {reviews.map((review) => {
+            <Stack spacing={4}>
+              <AddReview restaurant={restaurant} />
+              {reviews?.length ? (
+                reviews.map((review) => {
                   return (
                     <div ref={lastElementRef} key={review.id}>
                       <UpdateReview review={review} />
                     </div>
                   );
-                })}
-              </Stack>
-            )}
+                })
+              ) : (
+                <Text>Henüz yorum yok</Text>
+              )}
+            </Stack>
           </ModalBody>
 
           <ModalFooter></ModalFooter>
