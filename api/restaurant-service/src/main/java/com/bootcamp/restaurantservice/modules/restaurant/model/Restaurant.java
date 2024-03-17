@@ -37,11 +37,6 @@ public class Restaurant {
     private Long totalReviewsCount;
 
 
-    //38.439022, 27.142078 - sol ust
-    //38.378086, 27.124647 - sol alt
-    //38.436425, 27.211260 - sag ust
-    //38.378976, 27.216450 - sag alt
-
     public Restaurant() {
         this.id = UUID.randomUUID().toString();
     }
