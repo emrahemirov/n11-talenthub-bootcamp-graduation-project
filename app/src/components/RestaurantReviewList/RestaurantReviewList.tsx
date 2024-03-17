@@ -17,6 +17,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import UpdateReview from './UpdateReview';
+import AddReview from './AddReview';
 
 type RestaurantReviewListProps = { restaurant: Restaurant };
 
@@ -48,9 +49,11 @@ const RestaurantReviewList = ({ restaurant }: RestaurantReviewListProps) => {
     [fetchNextPage, hasNextPage, isFetching, isLoading],
   );
 
-  const reviews = data?.pages.flatMap((val) => {
-    return val.data.content;
-  });
+  const reviews = data?.pages
+    .flatMap((val) => {
+      return val.data.content;
+    })
+    .reverse();
 
   if (isLoading) return <></>;
 
@@ -80,6 +83,7 @@ const RestaurantReviewList = ({ restaurant }: RestaurantReviewListProps) => {
               <Text>Henüz yorum yok</Text>
             ) : (
               <Stack spacing={4}>
+                <AddReview restaurant={restaurant} />
                 {reviews.map((review) => {
                   return (
                     <div ref={lastElementRef} key={review.id}>

@@ -1,11 +1,15 @@
 import { Box, Flex } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsStarFill, BsStar } from 'react-icons/bs';
 
 type ReviewRateProps = { rate: number; onRateChange: (rate: number) => void };
 
 const ReviewRate = ({ rate, onRateChange }: ReviewRateProps) => {
   const [newRate, setNewRate] = useState(rate);
+
+  useEffect(() => {
+    setNewRate(rate);
+  }, [rate]);
 
   return (
     <Flex gap={1}>

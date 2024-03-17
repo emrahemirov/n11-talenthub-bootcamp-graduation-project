@@ -21,9 +21,10 @@ export type CreateReviewRequest = RestRequest<
   null,
   null,
   {
-    id: number;
     comment?: string;
     rate: number;
+    restaurantId: string;
+    userId: number;
   }
 >;
 export type DeleteReviewRequest = RestRequest<null, { id: number }>;
