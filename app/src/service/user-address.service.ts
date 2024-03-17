@@ -10,12 +10,12 @@ export type FindUserAddressesByUserIdRequest = RestRequest<
 export type UpdateUserAddressRequest = RestRequest<
   null,
   null,
-  Omit<UserAddress, 'createdAt' | 'updatedAt'>
+  Partial<Omit<UserAddress, 'createdAt' | 'updatedAt'>>
 >;
 export type CreateUserAddressRequest = RestRequest<
   null,
   null,
-  Omit<UserAddress, 'createdAt' | 'updatedAt'>
+  Partial<Omit<UserAddress, 'createdAt' | 'updatedAt'>>
 >;
 export type DeleteUserAddressRequest = RestRequest<null, { id: number }>;
 export type SetPreferredUserAddress = RestRequest<

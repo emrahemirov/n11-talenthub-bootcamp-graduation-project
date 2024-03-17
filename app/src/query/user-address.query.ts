@@ -29,13 +29,14 @@ export const useFindUserAddressesByUserIdQuery = () => {
   });
 };
 
-export const useCreateUserAddressMutation = ({
-  body,
-}: CreateUserAddressRequest) => {
+export const useCreateUserAddressMutation = () => {
   const queryClient = useQueryClient();
+  const query = useFindUserByIdQuery();
+  const user = query.data?.data;
 
   return useMutation({
-    mutationFn: () => createUserAddress({ body }),
+    mutationFn: ({ body }: CreateUserAddressRequest) =>
+      createUserAddress({ body: { ...body, userId: user?.id } }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: USER_ADDRESS_QUERY_KEYS.userAddresses,

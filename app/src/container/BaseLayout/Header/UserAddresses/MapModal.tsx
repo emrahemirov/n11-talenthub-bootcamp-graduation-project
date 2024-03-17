@@ -61,11 +61,10 @@ const MapModal = ({ initialCenter, onCenterChange }: GeoMapProps) => {
       longitude: newCenter.lng() as number,
     });
 
-    isLoaded &&
-      onCenterChange?.({
-        latitude: newCenter.lat().toString(),
-        longitude: newCenter.lng().toString(),
-      });
+    onCenterChange?.({
+      latitude: newCenter.lat().toString(),
+      longitude: newCenter.lng().toString(),
+    });
   };
 
   return (

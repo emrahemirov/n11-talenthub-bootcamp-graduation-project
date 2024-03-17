@@ -11,8 +11,8 @@ import {
   useDisclosure,
   Stack,
 } from '@chakra-ui/react';
-import React from 'react';
 import UserAddressItem from './UserAddressItem';
+import AddAddress from './AddAddress';
 
 const UserAddressList = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,6 +32,7 @@ const UserAddressList = () => {
           <ModalCloseButton />
           <ModalBody>
             <Stack>
+              <AddAddress />
               {addresses?.map((address) => {
                 return <UserAddressItem key={address.id} address={address} />;
               })}

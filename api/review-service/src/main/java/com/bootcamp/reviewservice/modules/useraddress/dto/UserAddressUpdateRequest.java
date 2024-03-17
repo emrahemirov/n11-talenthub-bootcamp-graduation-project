@@ -12,10 +12,10 @@ public record UserAddressUpdateRequest(
         @Size(max = 50)
         String name,
 
-        @Size(max = 10)
+       
         String latitude,
 
-        @Size(max = 10)
+
         String longitude,
 
         @Size(max = 255)
@@ -27,7 +27,7 @@ public record UserAddressUpdateRequest(
         String floor,
         @Size(max = 10)
         String apartmentNumber,
-        
+
         UserAddressType addressType
 ) {
 

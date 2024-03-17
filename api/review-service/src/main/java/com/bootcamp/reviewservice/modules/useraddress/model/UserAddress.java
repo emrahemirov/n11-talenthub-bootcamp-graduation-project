@@ -21,25 +21,25 @@ public class UserAddress extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 100)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "latitude", length = 10)
+    @Column(name = "latitude")
     private String latitude;
 
-    @Column(name = "longitude", length = 10)
+    @Column(name = "longitude")
     private String longitude;
 
     @Column(name = "address_line")
     private String addressLine;
 
-    @Column(name = "building_number", length = 10)
+    @Column(name = "building_number")
     private String buildingNumber;
 
-    @Column(name = "floor", length = 10)
+    @Column(name = "floor")
     private String floor;
 
-    @Column(name = "apartment_number", length = 10)
+    @Column(name = "apartment_number")
     private String apartmentNumber;
 
     @Column(name = "is_preferred")

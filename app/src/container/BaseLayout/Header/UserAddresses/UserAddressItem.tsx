@@ -6,12 +6,17 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  IconButton,
   Input,
   Stack,
 } from '@chakra-ui/react';
 import MapModal from './MapModal';
 import { useState } from 'react';
-import { useUpdateUserAddressMutation } from '@/query/user-address.query';
+import {
+  useDeleteUserAddressMutation,
+  useUpdateUserAddressMutation,
+} from '@/query/user-address.query';
+import { BiTrash } from 'react-icons/bi';
 
 type UserAddressItemProps = { address: UserAddress };
 
@@ -24,6 +29,7 @@ const UserAddressItem = ({ address }: UserAddressItemProps) => {
   const [name, setName] = useState(address.name);
 
   const updateMutation = useUpdateUserAddressMutation();
+  const deleteMutation = useDeleteUserAddressMutation();
 
   const handleUpdate = () => {
     updateMutation.mutate({
@@ -61,7 +67,17 @@ const UserAddressItem = ({ address }: UserAddressItemProps) => {
                 setCenter(newCenter);
               }}
             />
-            <Button onClick={handleUpdate}>Güncelle</Button>
+            <Flex gap={2}>
+              <IconButton
+                colorScheme='red'
+                aria-label='delete'
+                icon={<BiTrash />}
+                onClick={() => {
+                  deleteMutation.mutate({ pathVariables: { id: address.id } });
+                }}
+              />
+              <Button onClick={handleUpdate}>Güncelle</Button>
+            </Flex>
           </Flex>
         </Stack>
       </CardBody>
