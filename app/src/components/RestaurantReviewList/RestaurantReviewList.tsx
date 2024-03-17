@@ -16,7 +16,7 @@ import {
   useDisclosure,
   Stack,
 } from '@chakra-ui/react';
-import RestaurantReviewItem from './RestaurantReviewItem';
+import UpdateReview from './UpdateReview';
 
 type RestaurantReviewListProps = { restaurant: Restaurant };
 
@@ -66,7 +66,7 @@ const RestaurantReviewList = ({ restaurant }: RestaurantReviewListProps) => {
         <Flex gap={2} align={'center'} color={'white'}>
           <BsStarFill />
 
-          {restaurant.averageRate}
+          {restaurant.averageRate.toFixed(2)}
           <Text fontSize={'xs'}>({restaurant.totalReviewsCount})</Text>
         </Flex>
       </Button>
@@ -83,7 +83,7 @@ const RestaurantReviewList = ({ restaurant }: RestaurantReviewListProps) => {
                 {reviews.map((review) => {
                   return (
                     <div ref={lastElementRef} key={review.id}>
-                      <RestaurantReviewItem review={review} />
+                      <UpdateReview review={review} />
                     </div>
                   );
                 })}

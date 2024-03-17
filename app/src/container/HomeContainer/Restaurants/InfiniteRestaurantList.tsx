@@ -35,7 +35,13 @@ const InfiniteRestaurantList = () => {
       <Text fontWeight={'bold'} fontSize={'3xl'}>
         Restoranlar
       </Text>
-      <Flex wrap={'wrap'} justify={'space-between'} rowGap={12} columnGap={16}>
+      <Flex
+        pb={24}
+        wrap={'wrap'}
+        justify={'space-between'}
+        rowGap={12}
+        columnGap={16}
+      >
         {restaurants?.map((restaurant) => {
           return (
             <div ref={lastElementRef} key={restaurant.id}>

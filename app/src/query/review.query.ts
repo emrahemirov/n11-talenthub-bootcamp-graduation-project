@@ -40,11 +40,11 @@ export const useFindReviewsByRestaurantIdInfiniteQuery = ({
   });
 };
 
-export const useCreateReviewMutation = ({ body }: CreateReviewRequest) => {
+export const useCreateReviewMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => createReview({ body }),
+    mutationFn: ({ body }: CreateReviewRequest) => createReview({ body }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: REVIEW_QUERY_KEYS.reviews,
@@ -53,11 +53,11 @@ export const useCreateReviewMutation = ({ body }: CreateReviewRequest) => {
   });
 };
 
-export const useUpdateRestaurantMutation = ({ body }: UpdateReviewRequest) => {
+export const useUpdateReviewMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => updateReview({ body }),
+    mutationFn: ({ body }: UpdateReviewRequest) => updateReview({ body }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: REVIEW_QUERY_KEYS.reviews,
@@ -66,13 +66,12 @@ export const useUpdateRestaurantMutation = ({ body }: UpdateReviewRequest) => {
   });
 };
 
-export const useDeleteReviewMutation = ({
-  pathVariables,
-}: DeleteReviewRequest) => {
+export const useDeleteReviewMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => deleteReview({ pathVariables }),
+    mutationFn: ({ pathVariables }: DeleteReviewRequest) =>
+      deleteReview({ pathVariables }),
     onSettled() {
       queryClient.invalidateQueries({
         queryKey: REVIEW_QUERY_KEYS.reviews,
