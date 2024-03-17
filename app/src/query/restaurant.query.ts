@@ -29,5 +29,6 @@ export const useFindRecommendedRestaurantsQuery = () => {
     queryKey: RESTAURANT_QUERY_KEYS.recommendedRestaurants,
     queryFn: () =>
       findRecommendedRestaurants({ requestParams: { userId: user?.id } }),
+    enabled: !!user,
   });
 };

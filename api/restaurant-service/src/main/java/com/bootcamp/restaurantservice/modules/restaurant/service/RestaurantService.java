@@ -55,7 +55,7 @@ public class RestaurantService {
 
     public List<RestaurantResponse> getRecommendedRestaurantsWithin10Km(Long userId) {
         UserAddressResponse userAddress = Objects.requireNonNull(feignClient.getPreferredUserAddress(userId).getBody()).getData();
-
+        System.out.println(userAddress);
         List<Restaurant> restaurantList = restaurantSolrClient.getRecommendedRestaurantsWithin10Km(userAddress.latitude(), userAddress.longitude());
 
         return RestaurantMapper.INSTANCE.toRestaurantResponseList(restaurantList);
